@@ -1,4 +1,3 @@
-
 package ec.edu.ups.entidades;
 
 import jakarta.persistence.Entity;
@@ -11,26 +10,27 @@ import java.io.Serializable;
  *
  * @author rolan
  */
-@NamedQuery(name = "getByLevel", query = "SELECT u from Usuario u Where u.level >= :level")
+//@NamedQuery(name = "getByLevel", query = "SELECT u from User u Where u.level >= :level")
+@NamedQuery(name = "getUser", query = "SELECT u FROM  User u")
 @Entity
-public class Usuario implements Serializable{
+public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String password;
-    private int level;
+    private int id_rol;
  
-    public Usuario() {
+    public User() {
     }
 
-    public Usuario(int id, String name, String password, int level) {
+    public User(int id, String name, String password, int id_rol) {
         this.id = id;
         this.name = name;
         this.password = password;
-        this.level = level;
+        this.id_rol = id_rol;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -55,17 +55,17 @@ public class Usuario implements Serializable{
         this.password = password;
     }
 
-    public int getLevel() {
-        return level;
+    public int getId_rol() {
+        return id_rol;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setId_rol(int id_rol) {
+        this.id_rol = id_rol;
     }
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", name=" + name + ", password=" + password + ", level=" + level + '}';
+        return "User{" + "id=" + id + ", name=" + name + ", password=" + password + ", id_rol=" + id_rol + '}';
     }
     
 }

@@ -7,13 +7,55 @@
         <servlet-name>faces-servlet-name</servlet-name>
         <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
     </servlet>
-
+    
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name></realm-name>
+        <form-login-config>
+            <form-login-page>/Login.xhtml</form-login-page>
+            <form-error-page>/LoginError.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Seguridad de un usuario con perfil Administrador</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>DELETE</http-method>
+            <http-method>PUT</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMINISTRADOR</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <!--Definiendo roles que se tienen definidas en Base de Datos-->
+    <security-role>
+        <description>Usuario con todos los privilegios</description>
+        <role-name>ADMINISTRADOR</role-name>
+    </security-role>
+    
+    <security-role>
+        <description>Usuario con perfil de Empleado</description>
+        <role-name>EMPLEADO</role-name>
+    </security-role>
+    
+    <security-role>
+        <description>Usuario con perfil de usuario</description>
+        <role-name>USUARIO</role-name>
+    </security-role>
+    
     <servlet-mapping>
         <servlet-name>faces-servlet-name</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>    
 
     <welcome-file-list>
-        <welcome-file>home.xhtml</welcome-file>
+        <welcome-file>admin/home.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>
