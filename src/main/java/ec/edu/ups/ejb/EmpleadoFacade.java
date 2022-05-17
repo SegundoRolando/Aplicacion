@@ -35,5 +35,11 @@ public class EmpleadoFacade extends AbstractFacade<Empleado>{
         return res;
     }
     
-    
+    public void guardarEmpleado(Empleado empleado){
+        if(empleado.getId() > 0) {
+            em.merge(empleado);
+        } else {
+            em.persist(empleado);
+        }
+    }
 }
