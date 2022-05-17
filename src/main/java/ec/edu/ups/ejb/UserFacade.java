@@ -30,6 +30,33 @@ public class UserFacade extends AbstractFacade<User> {
         return em;
     }
     
+    
+    public List<User>getUser(){
+        Query query = em.createNamedQuery("getUser");
+        List <User> res = query.getResultList();
+        return res;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public List<Integer> ObtenerUsuarios(){
         String jpql1 = "SELECT u.id FROM  User u";
         List<Integer> res = em.createQuery(jpql1).getResultList();
@@ -50,11 +77,7 @@ public class UserFacade extends AbstractFacade<User> {
         return res;
     }
     
-    public List<User>getUser(){
-        Query query = em.createNamedQuery("getUser");
-        List <User> res = query.getResultList();
-        return res;
-    }
+    
     
     public List<User> getUserByNameAndLevel(String name, int level){
         CriteriaBuilder cb = em.getCriteriaBuilder();

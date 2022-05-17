@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <h:head>
-        <center><h3 >JSF 2.3: dataTable</h3></center>
+        <center><h3 >CRUD DE USUARIOS</h3></center>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
     </h:head>
 
@@ -11,12 +11,13 @@
 	
 	
        <div class="container" >
-    <h:dataTable value="#{listado}" var="prod" class="table table-striped">
+    <h:dataTable value="#{listadoUsuarios}" var="prod" class="table table-striped">
         <h:column>
             <f:facet name="header">
                 <h:outputText value="Id"/>
             </f:facet>
             <h:outputText value="#{prod.id  }"/>
+            
         </h:column>
         
         <h:column>

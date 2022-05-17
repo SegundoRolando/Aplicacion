@@ -14,22 +14,18 @@ public class UserControlador {
     @EJB
     private UserFacade facadeUser;
     
-    @Produces
-    @Model
+    
     public String titulo() {
         return "Hola mundo SOY IVAN...";
     }
     
     @Produces
     @RequestScoped
-    @Named("listado")
-    public List<User> listarUsuarios(){
+    @Named("listadoUsuarios")
+    public List<User> listarUsuarios() {
         System.out.println("Usuarios por level: ");
-          List<User> user = facadeUser.getUser();
-          for (User i : user) {
-              System.out.println("hooooooolaa" + i);
-              //i.setId(i.getId());
-          }  
-       return user;
+        List<User> user = facadeUser.getUser();
+        
+        return user;
     }
 }
