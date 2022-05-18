@@ -6,6 +6,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -35,5 +36,17 @@ public class ProductoFacade extends AbstractFacade<Producto> {
         } else {
             em.persist(producto);
         }
+    }
+    
+    public Producto porId(Long id) {
+        return em.find(Producto.class, id);
+    }
+    public void eliminar(Long id) {
+        Producto producto = porId(id);
+        em.remove(producto);
+    }
+    
+    public Optional<Producto> opcional(Long id) {
+        return Optional.ofNullable(porId(id));
     }
 }

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package ec.edu.ups.beans;
 
 import ec.edu.ups.ejb.ProductoFacade;
@@ -23,6 +20,7 @@ public class ProductoControlador {
     @EJB
     private ProductoFacade prodFacade;
     private Producto producto;
+    private Long id;
     
     @Produces
     @Model
@@ -42,6 +40,14 @@ public class ProductoControlador {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     
     @Produces
     @RequestScoped
@@ -51,18 +57,43 @@ public class ProductoControlador {
         return prod;
     }
     
+    
     public String guardar(){
         try {
             this.prodFacade.guardar(producto);
+            producto = new Producto();
         } catch (Exception e) {
         }
         return "index.xhtml?faces-redirect=true";
     }
     
-    public String eliminar(Long id) {
-//        Producto producto = prodFacade.remove(id);
-//        em.remove(producto);
+    public String eliminar(Long id){
+        prodFacade.eliminar(id);
         return "index.xhtml?faces-redirect=true";
+    }
+    
+    
+    @Produces
+    @Model
+    public Producto producto() {
+//        this.producto = new Producto();
+        if (id != null && id > 0) {
+            prodFacade.opcional(id).ifPresent(p -> {
+                this.producto = p;
+            });
+        }
+        return producto;
+    }
+    
+    public String editar(Long id){
+        this.id = id;
+        
+        if (id != null && id > 0) {
+            prodFacade.opcional(id).ifPresent(p -> {
+                this.producto = p;
+            });
+        }
+        return "form.xhtml";
     }
     
     
