@@ -8,6 +8,11 @@
         <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
     </servlet>
     
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>nova-colored</param-value>
+    </context-param>
+    
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name></realm-name>
