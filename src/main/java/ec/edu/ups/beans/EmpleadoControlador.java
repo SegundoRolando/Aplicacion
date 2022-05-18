@@ -23,6 +23,7 @@ public class EmpleadoControlador {
     @EJB
     private EmpleadoFacade empleadoFacade;
     private Empleado empleado;
+    private int id;
     
     @Produces
     @Model
@@ -42,6 +43,14 @@ public class EmpleadoControlador {
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }      
         
     @Produces
     @RequestScoped
@@ -59,4 +68,21 @@ public class EmpleadoControlador {
         }
         return "CrudEmpleados.xhtml?faces-redirect=true";
     }
+    
+    public String eliminar(int id){
+        empleadoFacade.eliminar(id);
+        return "CrudEmpleados.xhtml?faces-redirect=true";
+    }
+    
+    @Produces
+    @Model
+    public Empleado empleado(){
+        if(id != 0){
+            empleadoFacade.opcional(id).ifPresent(p ->{
+                this.empleado = p;
+            });
+        }
+        return empleado;
+    }
+    
 }
