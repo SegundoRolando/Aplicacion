@@ -78,11 +78,21 @@ public class EmpleadoControlador {
     @Model
     public Empleado empleado(){
         if(id != 0){
-            empleadoFacade.opcional(id).ifPresent(p ->{
-                this.empleado = p;
+            empleadoFacade.opcional(id).ifPresent(e ->{
+                this.empleado = e;
             });
         }
         return empleado;
+    }
+    
+    public String editar(int id){
+        this.id = id;
+        if(id != 0){
+            empleadoFacade.opcional(id).ifPresent(e ->{
+                    this.empleado = e;
+            });
+        }
+        return "CrearEmpleado.xhtml";
     }
     
 }

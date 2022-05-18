@@ -1,5 +1,7 @@
 package ec.edu.ups.ejb;
 
+
+
 import jakarta.persistence.EntityManager;
 /**
  *
