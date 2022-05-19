@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>#{tituloCliente}</title>
+</h:head>
+<h:body>
+    <h:panelGrid border="1">
+        <f:facet name="header">
+            <h:outputText value="#{tituloCliente}"/>
+        </f:facet>
+        <h:form id="crearForm">
+            <h:commandButton value="Crear nuevo Cliente" action="CrearCliente.xhtml"/>
+        </h:form>
+        <h:outputText value="No existen clientes en la base de datos!" rendered="#{empty listadoClientes}"/>
+        <h:dataTable value="#{listadoClientes}" var="emp" rendered="#{not empty listadoClientes}">
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Id"/>
+                </f:facet>
+                <h:outputText value="#{cli.id}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Codigo"/>
+                </f:facet>
+                <h:outputText value="#{cli.codigo}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre"/>
+                </f:facet>
+                <h:outputText value="#{cli.name}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Apellido"/>
+                </f:facet>
+                <h:outputText value="#{cli.apellido}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Cedula"/>
+                </f:facet>
+                <h:outputText value="#{cli.cedula}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Telefono"/>
+                </f:facet>
+                <h:outputText value="#{cli.telefono}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Correo"/>
+                </f:facet>
+                <h:outputText value="#{cli.correo}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Direccion"/>
+                </f:facet>
+                <h:outputText value="#{cli.direccion}"/>
+            </h:column>
+                        
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Editar"/>
+                </f:facet>
+                <h:form id="editarForm">
+                    <h:commandLink value="editar" action="#{clienteControlador.editar(cli.id)}"/>
+                </h:form>
+            </h:column>            
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Eliminar"/>
+                </f:facet>
+                <h:form id="eliminarForm">
+                    <h:commandLink value="eliminar" action="#{clienteControlador.eliminar(cli.id)}"
+                                   onclick="return confirm('esta seguro que desea eliminar?')"/>
+                </h:form>
+            </h:column>
+            
+        </h:dataTable>
+    </h:panelGrid>
+</h:body>
+</html>
