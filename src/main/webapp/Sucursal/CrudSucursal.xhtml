@@ -16,7 +16,7 @@
             <h:commandButton value="Crear nueva Sucursal" action="CrearSucursal.xhtml"/>
         </h:form>
         <h:outputText value="No existen producto en la base de datos!" rendered="#{empty listadoSucursales}"/>
-        <h:dataTable value="#{listadoSucursales}" var="suc" rendered="#{not empty listadoSucursaless}">
+        <h:dataTable value="#{listadoSucursales}" var="suc" rendered="#{not empty listadoSucursales}">
             
             <h:column>
                 <f:facet name="header">

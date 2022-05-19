@@ -18,6 +18,7 @@ import java.util.List;
  *
  * @author Jose
  */
+@Model
 public class SucursalControlador {
     @EJB
     private SucursalFacade sucursalFacade;
@@ -68,7 +69,7 @@ public class SucursalControlador {
         return "CrudSucursal.xhtml?faces-redirect=true";
     }
     
-    public String elmiminar(int id){
+    public String eliminar(int id){
         sucursalFacade.eliminar(id);
         return "CrudSucursal.xhtml?faces-redirect=true";
     }
