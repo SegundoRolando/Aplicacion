@@ -3,17 +3,12 @@ package ec.edu.ups.ejb;
 
 
 import ec.edu.ups.entidades.Proveedor;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import java.util.List;
-import java.util.Optional;
-
-
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
+
 
 /**
  *
