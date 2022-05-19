@@ -72,19 +72,6 @@ public class ProductoControlador {
         return "index.xhtml?faces-redirect=true";
     }
     
-    
-    @Produces
-    @Model
-    public Producto producto() {
-//        this.producto = new Producto();
-        if (id != null && id > 0) {
-            prodFacade.opcional(id).ifPresent(p -> {
-                this.producto = p;
-            });
-        }
-        return producto;
-    }
-    
     public String editar(Long id){
         this.id = id;
         

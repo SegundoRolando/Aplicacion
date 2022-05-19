@@ -10,13 +10,13 @@
 <h:body>
     <h:panelGrid border="1">
         <f:facet name="header">
-            <h:outputText value="#{titulo}"/>
+            <h:outputText value="#{tituloCategoria}"/>
         </f:facet>
         <h:form id="crearForm">
-            <h:commandButton value="Crear Producto" action="form.xhtml"/>
+            <h:commandButton value="Crear Categoria" action="formCategoria.xhtml"/>
         </h:form>
-        <h:outputText value="No existen producto en la base de datos!" rendered="#{empty listadoProductos}"/>
-        <h:dataTable value="#{listadoProductos}" var="prod" rendered="#{not empty listadoProductos}">
+        <h:outputText value="No existen producto en la base de datos!" rendered="#{empty listadoCategorias}"/>
+        <h:dataTable value="#{listadoCategorias}" var="prod" rendered="#{not empty listadoCategorias}">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Id"/>
@@ -29,31 +29,13 @@
                 </f:facet>
                 <h:outputText value="#{prod.nombre}"/>
             </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Stock"/>
-                </f:facet>
-                <h:outputText value="#{prod.stock}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Precio"/>
-                </f:facet>
-                <h:outputText value="#{prod.precio}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Descripcion"/>
-                </f:facet>
-                <h:outputText value="#{prod.descripcion}"/>
-            </h:column>
-            
+           
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Editar"/>
                 </f:facet>
                 <h:form id="editarForm">
-                    <h:commandLink value="editar" action="#{productoControlador.editar(prod.id)}"/>
+                    <h:commandLink value="editar" action="#{categoriaControlador.editar(prod.id)}"/>
                 </h:form>
             </h:column>
             
@@ -63,7 +45,7 @@
                     <h:outputText value="Eliminar"/>
                 </f:facet>
                 <h:form id="eliminarForm">
-                    <h:commandLink value="eliminar" action="#{productoControlador.eliminar(prod.id)}"
+                    <h:commandLink value="eliminar" action="#{categoriaControlador.eliminar(prod.id)}"
                                    onclick="return confirm('esta seguro que desea eliminar?')"/>
                 </h:form>
             </h:column>

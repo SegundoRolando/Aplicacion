@@ -13,7 +13,8 @@ public class Producto {
     private Integer precio;
     private String stock;
     private String descripcion;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Categoria categoria;
 //    @Column(name="fecha_registro")
 //    private LocalDate fechaRegistro;
 
@@ -60,6 +61,14 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+    
     
 //    @PrePersist
 //    public void prePersist() {
