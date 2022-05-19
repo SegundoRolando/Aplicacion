@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Formulario para nuevas Sucursales</title>
+</h:head>
+<h:body>
+
+    <h:panelGrid border="1">
+        <f:facet name="header">
+            <h:outputText value="Formulario para nuevas Sucursales"/>
+        </f:facet>
+        <h:link outcome="CrudSucursal" value="volver"/>
+        <h:form>
+            <h:panelGrid columns="2">
+                
+                <h:outputLabel value="Id" for="id"/>
+                <h:inputText id="id" value="#{sucursalControlador.sucursal.id}"/>
+                
+                <h:outputLabel value="Nombre" for="nombre"/>
+                <h:inputText id="nombre" value="#{sucursalControlador.sucursal.name}"/>
+
+                <h:outputLabel value="Direccion" for="direccion"/>
+                <h:inputText id="direccion" value="#{sucursalControlador.sucursal.direccion}"/>
+
+                <h:outputLabel value="Telefono" for="telefono"/>
+                <h:inputText id="telefono" value="#{sucursalControlador.sucursal.telefono}"/> 
+                
+                <h:outputLabel value="Latitud" for="latitud"/>
+                <h:inputText id="latitud" value="#{sucursalControlador.sucursal.latitud}"/>
+                
+                <h:outputLabel value="Altitud" for="altitud"/>
+                <h:inputText id="altitud" value="#{sucursalControlador.sucursal.altitud}"/>
+
+                <h:commandButton value="Crear" action="#{sucursalControlador.guardar}"/>
+                
+            </h:panelGrid>
+        </h:form>
+
+    </h:panelGrid>
+</h:body>
+</html>
