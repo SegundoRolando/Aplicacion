@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Proveedores</title>
+    </head>
+    <body>
+       <h:panelGrid border="1">
+        <f:facet name="header">
+            <h:outputText value="Formulario Proveedores"/>
+        </f:facet>
+        <h:link outcome="pageTableProveedor" value="volver"/>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Código" for="codigo"/>
+                <h:inputText id="codigo" value="#{beansControllerProveedor.proveedor.codigo}"/>
+                
+                <h:outputLabel value="E-mail" for="correo"/>
+                <h:inputText id="correo" value="#{beansControllerProveedor.proveedor.correo}"/>
+                
+                <h:outputLabel value="Nombre Proveedor" for="nom_Proveedor"/>
+                <h:inputText id="nom_Proveedor" value="#{beansControllerProveedor.proveedor.nom_Proveedor}"/>
+                
+                <h:outputLabel value="Teléfono" for="telefono"/>
+                <h:inputText id="telefono" value="#{beansControllerProveedor.proveedor.telefono}"/>
+                
+                <h:outputLabel value="Dirección" for="direccion"/>
+                <h:inputText id="direccion" value="#{beansControllerProveedor.proveedor.direccion}"/>
+
+                <h:outputLabel value="Ciudad" for="ciudad"/>
+                <h:inputText id="ciudad" value="#{beansControllerProveedor.proveedor.ciudad}"/>
+
+                <h:commandButton value="Guardar" action="#{beansControllerProveedor.guardarProveedor}"/>
+                
+            </h:panelGrid>
+        </h:form>
+
+    </h:panelGrid>
+    </body>
+</html>
+
