@@ -30,7 +30,7 @@ public class ClienteControlador {
     @Produces
     @Model
     public String tituloCliente() {
-        return "CRUD de Empleados";
+        return "CRUD de Clientes";
     }
     
     @PostConstruct
@@ -58,7 +58,7 @@ public class ClienteControlador {
     @RequestScoped
     @Named("listadoClientes")
     public List<Cliente>listarCliente(){
-        System.out.println("Listar empleados por nivel: ");
+        System.out.println("Listar cliente por nivel: ");
         List<Cliente> cli = clienteFacade.getCliente();
         return cli;
     }
@@ -68,12 +68,12 @@ public class ClienteControlador {
             this.clienteFacade.guardarCliente(cliente);
         } catch (Exception e) {
         }
-        return "CrudEmpleados.xhtml?faces-redirect=true";
+        return "CrudClientes.xhtml?faces-redirect=true";
     }
     
     public String eliminar(int id){
         clienteFacade.eliminar(id);
-        return "CrudEmpleados.xhtml?faces-redirect=true";
+        return "CrudClientes.xhtml?faces-redirect=true";
     }
     
     @Produces
