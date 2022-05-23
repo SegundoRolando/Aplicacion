@@ -5,9 +5,7 @@
 package ec.edu.ups.beans;
 
 import ec.edu.ups.ejb.ClienteFacade;
-import ec.edu.ups.ejb.EmpleadoFacade;
 import ec.edu.ups.entidades.Cliente;
-import ec.edu.ups.entidades.Empleado;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;

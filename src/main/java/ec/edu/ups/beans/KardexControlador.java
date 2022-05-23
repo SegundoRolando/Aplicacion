@@ -29,8 +29,8 @@ public class KardexControlador {
     
     @Produces
     @Model
-    public String tituloCliente() {
-        return "Kardex";
+    public String tituloKardex() {
+        return "kardex";
     }
     
     @PostConstruct

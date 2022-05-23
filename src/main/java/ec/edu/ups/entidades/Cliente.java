@@ -22,7 +22,7 @@ public class Cliente implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int codigo;
-    private String name;
+    private String nombre;
     private String cedula;
     private String apellido;
     private String telefono;
@@ -32,10 +32,10 @@ public class Cliente implements Serializable{
     public Cliente() {
     }
 
-    public Cliente(int id, int codigo, String name, String cedula, String apellido, String telefono, String correo, String direccion) {
+    public Cliente(int id, int codigo, String nombre, String cedula, String apellido, String telefono, String correo, String direccion) {
         this.id = id;
         this.codigo = codigo;
-        this.name = name;
+        this.nombre = nombre;
         this.cedula = cedula;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -44,7 +44,6 @@ public class Cliente implements Serializable{
     }
 
     
-
     public int getId() {
         return id;
     }
@@ -53,14 +52,14 @@ public class Cliente implements Serializable{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-
+    
     public int getCodigo() {
         return codigo;
     }
@@ -111,10 +110,8 @@ public class Cliente implements Serializable{
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", codigo=" + codigo + ", name=" + name + ", cedula=" + 
-                cedula + ", apellido=" + apellido + ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + '}';
+        return "Cliente{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", cedula=" + cedula 
+                + ", apellido=" + apellido + ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + '}';
     }
 
-    
-        
 }

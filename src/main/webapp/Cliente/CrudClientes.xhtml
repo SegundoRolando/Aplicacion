@@ -16,7 +16,7 @@
             <h:commandButton value="Crear nuevo Cliente" action="CrearCliente.xhtml"/>
         </h:form>
         <h:outputText value="No existen clientes en la base de datos!" rendered="#{empty listadoClientes}"/>
-        <h:dataTable value="#{listadoClientes}" var="emp" rendered="#{not empty listadoClientes}">
+        <h:dataTable value="#{listadoClientes}" var="cli" rendered="#{not empty listadoClientes}">
             
             <h:column>
                 <f:facet name="header">
@@ -36,7 +36,7 @@
                 <f:facet name="header">
                     <h:outputText value="Nombre"/>
                 </f:facet>
-                <h:outputText value="#{cli.name}"/>
+                <h:outputText value="#{cli.nombre}"/>
             </h:column>
             
             <h:column>

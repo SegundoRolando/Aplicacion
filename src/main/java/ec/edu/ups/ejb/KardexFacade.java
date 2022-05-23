@@ -56,7 +56,7 @@ public class KardexFacade extends AbstractFacade<Kardex>{
         em.remove(kardex);
     }
     
-    //Para que no exista error al no existir empleados en la base
+    //
     public Optional<Kardex> opcional(int id){
         return Optional.ofNullable(BuscoPorId(id));
     }
