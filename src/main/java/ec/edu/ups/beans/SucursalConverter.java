@@ -26,15 +26,15 @@ public class SucursalConverter implements Converter<Sucursal>{
         if (id == null) {
             return null;
         }
-        Optional<Sucursal> categoriaOptional = sucfacade.opcional(Long.valueOf(id));
-        if (categoriaOptional.isPresent()) {
-            return categoriaOptional.get();
+        Optional<Sucursal> sucursalOptional = sucfacade.opcional(Long.valueOf(id));
+        if (sucursalOptional.isPresent()) {
+            return sucursalOptional.get();
         }
         return null;
     }
 
     @Override
-    public String getAsString(FacesContext fc, UIComponent uic, Sucursal sucursal) {
+    public String getAsString(FacesContext context, UIComponent component, Sucursal sucursal) {
         if(sucursal == null){
             return "0";
         }

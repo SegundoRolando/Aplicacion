@@ -67,12 +67,12 @@ public class SucursalControlador {
             sucursal = new Sucursal();
         }catch (Exception e){            
         }
-        return "CrudSucursal.xhtml?faces-redirect=true";
+        return "Sucursal.xhtml?faces-redirect=true";
     }
     
     public String eliminar(Long id){
         sucursalFacade.eliminar(id);
-        return "CrudSucursal.xhtml?faces-redirect=true";
+        return "Sucursal.xhtml?faces-redirect=true";
     }
     
     @Produces
