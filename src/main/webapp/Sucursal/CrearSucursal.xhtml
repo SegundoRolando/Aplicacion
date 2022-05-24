@@ -13,10 +13,12 @@
         <f:facet name="header">
             <h:outputText value="Formulario para nuevas Sucursales"/>
         </f:facet>
+        
         <h:link outcome="CrudSucursal" value="volver"/>
+        
         <h:form>
             <h:panelGrid columns="2">
-                
+                 
                 <h:outputLabel value="Nombre" for="nombre"/>
                 <h:inputText id="nombre" value="#{sucursalControlador.sucursal.name}"/>
 
