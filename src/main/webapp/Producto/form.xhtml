@@ -35,8 +35,14 @@
                     <f:converter binding="#{categoriaConverter}"/>
                 </h:selectOneMenu>
                 
+                <h:selectOneMenu id="Sucursal" value="#{productoControlador.producto.sucursal}">
+                    <f:selectItem itemLabel="--- Seleccione una Categoria ---" itemValue="#{null}"/>
+                    <f:selectItems value="#{listadoSucursales}" var="suc" itemLabel="#{suc.name}"/>
+                    <f:converter binding="#{sucursalConverter}"/>
+                </h:selectOneMenu>
+                
                 <h:outputLabel value="des" for="Descripción"/>
-                <h:inputText id="des" value="#{productoControlador.producto.descripcion}"/>
+                <h:inputText id="Descripción" value="#{productoControlador.producto.descripcion}"/>
 
                 <h:commandButton value="Crear" action="#{productoControlador.guardar}"/>
                 <h:inputHidden value="#{productoControlador.producto.id}"/>

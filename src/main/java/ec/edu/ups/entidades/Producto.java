@@ -15,6 +15,8 @@ public class Producto {
     private String descripcion;
     @ManyToOne(fetch = FetchType.LAZY)
     private Categoria categoria;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Sucursal sucursal;
 //    @Column(name="fecha_registro")
 //    private LocalDate fechaRegistro;
 
@@ -70,6 +72,13 @@ public class Producto {
     }
     
     
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
+    }
 //    @PrePersist
 //    public void prePersist() {
 //        fechaRegistro = LocalDate.now();
@@ -77,8 +86,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", stock=" + stock + ", descripcion=" + descripcion + '}';
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", stock=" + stock + ", descripcion=" + descripcion + ", categoria=" + categoria + ", sucursal=" + sucursal + '}';
     }
 
-    
 }

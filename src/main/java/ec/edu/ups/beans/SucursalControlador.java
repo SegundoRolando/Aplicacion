@@ -23,7 +23,7 @@ public class SucursalControlador {
     @EJB
     private SucursalFacade sucursalFacade;
     private Sucursal sucursal;
-    private int id;
+    private Long id;
     
     @Produces
     @Model
@@ -44,14 +44,14 @@ public class SucursalControlador {
         this.sucursal = sucursal;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    
+
     @Produces
     @RequestScoped
     @Named("listadoSucursales")
@@ -64,12 +64,13 @@ public class SucursalControlador {
     public String guardar(){
         try{
             this.sucursalFacade.GuardarSucursal(sucursal);
+            sucursal = new Sucursal();
         }catch (Exception e){            
         }
         return "CrudSucursal.xhtml?faces-redirect=true";
     }
     
-    public String eliminar(int id){
+    public String eliminar(Long id){
         sucursalFacade.eliminar(id);
         return "CrudSucursal.xhtml?faces-redirect=true";
     }
@@ -77,7 +78,7 @@ public class SucursalControlador {
     @Produces
     @Model
     public Sucursal sucursal(){
-        if(id != 0){
+        if(id != null && id > 0){
             sucursalFacade.opcional(id).ifPresent(s ->{
                 this.sucursal = s;
             });
@@ -85,9 +86,9 @@ public class SucursalControlador {
         return sucursal;
     }
     
-    public String editar(int id){
+    public String editar(Long id){
         this.id = id;
-        if(id != 0){
+        if(id != null && id > 0){
             sucursalFacade.opcional(id).ifPresent(s ->{
                 this.sucursal = s;
             });

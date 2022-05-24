@@ -20,7 +20,7 @@ public class CategoriaControlador {
     @EJB
     private CategoriaFacade cateFacade;
     private Categoria categoria;
-    Long id;
+    private Long id;
    
     @PostConstruct
     public void init() {

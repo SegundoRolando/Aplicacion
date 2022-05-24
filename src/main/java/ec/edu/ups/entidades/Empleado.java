@@ -20,7 +20,7 @@ import java.io.Serializable;
 public class Empleado implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
     private String password;
     private int level;
@@ -28,18 +28,18 @@ public class Empleado implements Serializable{
     public Empleado() {
     }
 
-    public Empleado(int id, String name, String password, int level) {
+    public Empleado(Long id, String name, String password, int level) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.level = level;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

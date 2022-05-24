@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ec.edu.ups.ejb;
 
 import ec.edu.ups.entidades.Empleado;
@@ -37,7 +33,7 @@ public class EmpleadoFacade extends AbstractFacade<Empleado>{
     }
     
     public void guardarEmpleado(Empleado empleado){
-        if(empleado.getId() != 0) {
+        if(empleado.getId() != null && empleado.getId() > 0) {
             em.merge(empleado);
         } else {
             em.persist(empleado);
@@ -45,18 +41,18 @@ public class EmpleadoFacade extends AbstractFacade<Empleado>{
     }
     
     //Buscar al empleado por la ID
-    public Empleado BuscoPorId(int id){
+    public Empleado BuscoPorId(Long id){
         return em.find(Empleado.class, id);
     }
     
     //Elimiar al empleado por ID
-    public void eliminar(int id){
+    public void eliminar(Long id){
         Empleado empleado = BuscoPorId(id);
         em.remove(empleado);
     }
     
     //Para que no exista error al no existir empleados en la base
-    public Optional<Empleado> opcional(int id){
+    public Optional<Empleado> opcional(Long id){
         return Optional.ofNullable(BuscoPorId(id));
     }
     

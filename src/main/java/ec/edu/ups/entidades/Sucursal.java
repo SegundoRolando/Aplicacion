@@ -20,7 +20,7 @@ import java.io.Serializable;
 public class Sucursal implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
     private String direccion;
     private String telefono;
@@ -30,7 +30,7 @@ public class Sucursal implements Serializable{
     public Sucursal() {
     }
 
-    public Sucursal(int id, String name, String direccion, String telefono, String latitud, String altitud) {
+    public Sucursal(Long id, String name, String direccion, String telefono, String latitud, String altitud) {
         this.id = id;
         this.name = name;
         this.direccion = direccion;
@@ -39,11 +39,11 @@ public class Sucursal implements Serializable{
         this.altitud = altitud;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
