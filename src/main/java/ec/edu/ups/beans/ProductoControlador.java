@@ -6,6 +6,7 @@ import ec.edu.ups.entidades.Producto;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.enterprise.inject.Model;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
@@ -64,12 +65,12 @@ public class ProductoControlador {
             producto = new Producto();
         } catch (Exception e) {
         }
-        return "index.xhtml?faces-redirect=true";
+        return "Producto.xhtml?faces-redirect=true";
     }
     
     public String eliminar(Long id){
         prodFacade.eliminar(id);
-        return "index.xhtml?faces-redirect=true";
+        return "Producto.xhtml?faces-redirect=true";
     }
     
     public String editar(Long id){
