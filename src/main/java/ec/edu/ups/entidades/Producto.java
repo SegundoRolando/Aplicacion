@@ -3,6 +3,9 @@ package ec.edu.ups.entidades;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Producto {
@@ -15,14 +18,26 @@ public class Producto {
     private String descripcion;
     @ManyToOne(fetch = FetchType.LAZY)
     private Categoria categoria;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Sucursal sucursal;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn
+    private List<Sucursal> sucursal;
 //    @Column(name="fecha_registro")
 //    private LocalDate fechaRegistro;
 
     public Producto() {
+        this.sucursal = new ArrayList<Sucursal>();
     }
 
+    public List<Sucursal> getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(List<Sucursal> sucursal) {
+        this.sucursal = sucursal;
+    }
+    
+    
+    
     public Long getId() {
         return id;
     }
@@ -70,14 +85,7 @@ public class Producto {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-     
-    public Sucursal getSucursal() {
-        return sucursal;
-    }
-
-    public void setSucursal(Sucursal sucursal) {
-        this.sucursal = sucursal;
-    }
+    
 //    @PrePersist
 //    public void prePersist() {
 //        fechaRegistro = LocalDate.now();

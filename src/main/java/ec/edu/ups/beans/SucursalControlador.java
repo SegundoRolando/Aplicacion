@@ -57,7 +57,7 @@ public class SucursalControlador {
     @Named("listadoSucursales")
     public List<Sucursal>listarSucursal(){
         System.out.println("Listar sucursales: ");
-        List<Sucursal> suc = sucursalFacade.getSucursal();
+        List<Sucursal> suc = sucursalFacade.listar();
         return suc;
     }
     

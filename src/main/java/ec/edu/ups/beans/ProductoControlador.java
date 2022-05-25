@@ -22,11 +22,12 @@ public class ProductoControlador {
     private ProductoFacade prodFacade;
     private Producto producto;
     private Long id;
+    private Long idSucursal;
     
     @Produces
     @Model
     public String titulo() {
-        return "CRUD PRODUCTO";
+        return "GESTIÓN DE PRODUCTOS";
     }
     
     @PostConstruct
@@ -48,6 +49,14 @@ public class ProductoControlador {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getIdSucursal() {
+        return idSucursal;
+    }
+
+    public void setIdSucursal(Long idSucursal) {
+        this.idSucursal = idSucursal;
     }
     
     @Produces

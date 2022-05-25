@@ -4,7 +4,7 @@ import ec.edu.ups.entidades.Sucursal;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -26,10 +26,8 @@ public class SucursalFacade extends AbstractFacade<Sucursal>{
         return em;
     }
     
-    public List<Sucursal>getSucursal(){
-        Query query = em.createNamedQuery("getSucursal");
-        List<Sucursal> res = query.getResultList();
-        return res;
+    public List<Sucursal> listar() {
+        return em.createQuery("select p from Sucursal p", Sucursal.class).getResultList();
     }
     
     //Guardar sucursal

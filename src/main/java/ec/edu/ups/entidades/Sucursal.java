@@ -4,18 +4,20 @@
  */
 package ec.edu.ups.entidades;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import java.io.Serializable;
 
 /**
  *
  * @author Jose
  */
-@NamedQuery(name = "getSucursal", query = "SELECT u FROM  Sucursal u")
+
 @Entity
 public class Sucursal implements Serializable{
     @Id
