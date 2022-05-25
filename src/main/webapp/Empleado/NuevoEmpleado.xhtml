@@ -193,16 +193,16 @@
         </f:facet>
         <h:link outcome="Empleado" value="volver" class="btn btn-sm btn-primary my-2"/>
         <h:form>
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2" class="table table-hover table-striped">
 
                 <h:outputLabel value="Nombre" for="nombre"/>
-                <h:inputText id="nombre" value="#{empleadoControlador.empleado.name}"/>
+                <h:inputText id="nombre" value="#{empleadoControlador.empleado.name}" class="form-control"/>
 
                 <h:outputLabel value="Password" for="password"/>
-                <h:inputText id="password" value="#{empleadoControlador.empleado.password}"/>
+                <h:inputText id="password" value="#{empleadoControlador.empleado.password}" class="form-control"/>
 
                 <h:outputLabel value="Nivel" for="nivel"/>
-                <h:inputText id="nivel" value="#{empleadoControlador.empleado.level}"/>
+                <h:inputText id="nivel" value="#{empleadoControlador.empleado.level}" class="form-control"/>
 
                 <h:commandButton value="Crear" action="#{empleadoControlador.guardar}" class="btn btn-primary"/>
                 

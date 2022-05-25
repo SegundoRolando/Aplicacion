@@ -93,7 +93,7 @@ public class SucursalControlador {
                 this.sucursal = s;
             });
         }
-        return "CrearSucursal.xhtml";
+        return "NuevaSucursal.xhtml";
     }
     
 }

@@ -193,22 +193,22 @@
         </f:facet>
         <h:link outcome="Sucursal" value="volver" class="btn btn-sm btn-primary my-2"/>
         <h:form>
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2" class="table table-hover table-striped">
                  
                 <h:outputLabel value="Nombre" for="nombre"/>
-                <h:inputText id="nombre" value="#{sucursalControlador.sucursal.name}"/>
+                <h:inputText id="nombre" value="#{sucursalControlador.sucursal.name}" class="form-control"/>
 
                 <h:outputLabel value="Direccion" for="direccion"/>
-                <h:inputText id="direccion" value="#{sucursalControlador.sucursal.direccion}"/>
+                <h:inputText id="direccion" value="#{sucursalControlador.sucursal.direccion}" class="form-control"/>
 
                 <h:outputLabel value="Telefono" for="telefono"/>
-                <h:inputText id="telefono" value="#{sucursalControlador.sucursal.telefono}"/> 
+                <h:inputText id="telefono" value="#{sucursalControlador.sucursal.telefono}" class="form-control"/> 
                 
                 <h:outputLabel value="Latitud" for="latitud"/>
-                <h:inputText id="latitud" value="#{sucursalControlador.sucursal.latitud}"/>
+                <h:inputText id="latitud" value="#{sucursalControlador.sucursal.latitud}" class="form-control"/>
                 
                 <h:outputLabel value="Altitud" for="altitud"/>
-                <h:inputText id="altitud" value="#{sucursalControlador.sucursal.altitud}"/>
+                <h:inputText id="altitud" value="#{sucursalControlador.sucursal.altitud}" class="form-control"/>
 
                 <h:commandButton value="Crear" action="#{sucursalControlador.guardar}" class="btn btn-primary"/>
                 
