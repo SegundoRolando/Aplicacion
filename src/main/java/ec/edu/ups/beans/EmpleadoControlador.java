@@ -66,12 +66,12 @@ public class EmpleadoControlador {
             this.empleadoFacade.guardarEmpleado(empleado);
         } catch (Exception e) {
         }
-        return "CrudEmpleados.xhtml?faces-redirect=true";
+        return "Empleado.xhtml?faces-redirect=true";
     }
     
     public String eliminar(Long id){
         empleadoFacade.eliminar(id);
-        return "CrudEmpleados.xhtml?faces-redirect=true";
+        return "Empleado.xhtml?faces-redirect=true";
     }
     
     @Produces
@@ -92,7 +92,7 @@ public class EmpleadoControlador {
                     this.empleado = e;
             });
         }
-        return "CrearEmpleado.xhtml";
+        return "NuevoEmpleado.xhtml";
     }
     
 }
