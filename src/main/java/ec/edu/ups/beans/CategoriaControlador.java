@@ -52,12 +52,12 @@ public class CategoriaControlador {
     
     public String guardar(){
             this.cateFacade.guardar(categoria);
-        return "CrudCategoria.xhtml?faces-redirect=true";
+        return "Producto.xhtml?faces-redirect=true";
     }
     
     public String eliminar(Long id){
          cateFacade.eliminar(id);
-        return "CrudCategoria.xhtml?faces-redirect=true";
+        return "Producto.xhtml?faces-redirect=true";
     }
     
     public String editar(Long id){
