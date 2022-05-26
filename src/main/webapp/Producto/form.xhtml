@@ -215,6 +215,15 @@
                 </h:selectOneMenu>
                 <h:message for="categoria" style="color:red;"/>
                 
+                 <h:outputLabel value="Sucursal" for="sucursal" class="col-form-label"/>
+                <h:selectOneMenu id="sucursal" value="#{productoControlador.sucursal.id}" class="form-select">
+                    <f:selectItem itemLabel="--- Seleccione una Sucursal ---" itemValue="#{null}"/>
+                    <f:selectItems value="#{listadoSucursales}" var="sur" itemLabel="#{sur.name}" itemValue="#{sur.id}"/>
+                    
+                </h:selectOneMenu>
+                <h:message for="sucursal" style="color:red;"/>
+                
+                
                 <h:outputLabel value="des" for="Descripción" class="col-form-label"/>
                 <h:inputText id="des" value="#{productoControlador.producto.descripcion}" class="form-control"/>
                 <h:message for="des" style="color:red;"/>

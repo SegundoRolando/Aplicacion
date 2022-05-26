@@ -4,14 +4,12 @@
  */
 package ec.edu.ups.entidades;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import java.io.Serializable;
+
 
 /**
  *
@@ -28,7 +26,7 @@ public class Sucursal implements Serializable{
     private String telefono;
     private String latitud;
     private String altitud;
-
+    
     public Sucursal() {
     }
 
