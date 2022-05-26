@@ -3,10 +3,10 @@ package ec.edu.ups.beans;
 
 import ec.edu.ups.ejb.ProductoFacade;
 import ec.edu.ups.entidades.Producto;
+import ec.edu.ups.entidades.Sucursal;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.enterprise.context.SessionScoped;
 import jakarta.enterprise.inject.Model;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
@@ -22,7 +22,7 @@ public class ProductoControlador {
     private ProductoFacade prodFacade;
     private Producto producto;
     private Long id;
-    private Long idSucursal;
+    private Sucursal sucursal;
     
     @Produces
     @Model
@@ -33,6 +33,7 @@ public class ProductoControlador {
     @PostConstruct
     public void init() {
         this.producto = new Producto();
+        this.sucursal = new Sucursal();
     }
     
     public Producto getProducto() {
@@ -51,18 +52,20 @@ public class ProductoControlador {
         this.id = id;
     }
 
-    public Long getIdSucursal() {
-        return idSucursal;
+    public Sucursal getSucursal() {
+        return sucursal;
     }
 
-    public void setIdSucursal(Long idSucursal) {
-        this.idSucursal = idSucursal;
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
     }
+    
     
     @Produces
     @RequestScoped
     @Named("listadoProductos")
     public List<Producto> listarProductos() {
+        
         List<Producto> prod = prodFacade.listar();
         return prod;
     }
@@ -70,8 +73,8 @@ public class ProductoControlador {
     
     public String guardar(){
         try {
+            producto.setSucursal(sucursal);
             this.prodFacade.guardar(producto);
-            producto = new Producto();
         } catch (Exception e) {
         }
         return "Producto.xhtml?faces-redirect=true";
