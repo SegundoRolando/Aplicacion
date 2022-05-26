@@ -15,7 +15,7 @@ import java.util.List;
  * @author ASUS
  */
 @Model
-public class BeansControllerProveedor {
+public class ProveedorControlador {
     @EJB
     private ProveedorFacede proveedorFacede;
     private Proveedor proveedor;
@@ -53,14 +53,14 @@ public class BeansControllerProveedor {
     }
     public String eliminar(int codigo){
         proveedorFacede.eliminar(codigo);
-        return "pageTableProveedor.xhtml?faces-redirect=true";
+        return "Proveedor.xhtml?faces-redirect=true";
     }
     public String guardarProveedor(){
         try {
             this.proveedorFacede.guardarProveedor(proveedor);
         } catch (Exception e) {
         }
-        return "pageTableProveedor.xhtml?faces-redirect=true";
+        return "Proveedor.xhtml?faces-redirect=true";
     }
     public String editar(int codigo){
         this.codigo = codigo;
@@ -69,7 +69,7 @@ public class BeansControllerProveedor {
                     this.proveedor = p;
             });
         }
-        return "pageFormProveedor.xhtml";
+        return "NuevoProveedor.xhtml";
     } 
     
     

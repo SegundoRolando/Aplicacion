@@ -73,9 +73,9 @@
                         </div>
                     </div>
                     <a href="../Producto/Producto.xhtml" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Productos</a>
-                    <a href="Sucursal.xhtml" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Sucursales</a>
-                    <a href="../Empleado/Empleado.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Empleados</a>
-                    <a href="../Proveedor/Proveedor.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Proveedores</a>
+                    <a href="../Sucursal/Sucursal.xhtml" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Sucursal </a>
+                    <a href="../Empleado/Empleado.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Empleado</a>
+                    <a href="Proveedor.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Proveedores</a>
                     <a href="../Cliente/Clientes.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Clientes</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                     <div class="nav-item dropdown">
@@ -186,91 +186,45 @@
             <!-- Navbar End -->
 
 
-            <!-- Blank Start -->
-            
-            
- <div class="container-fluid pt-4 px-4">
-<div class="bg-light rounded-top p-4">
-       
-   <div class="table-responsive">
-                        
-     <h:panelGrid border="1" class="table">
+<!-- Blank Start -->
+  <div class="container-fluid pt-4 px-4">
+      <div class="bg-light rounded-top p-4">
+        <h:panelGrid border="1" class="table">
         <f:facet name="header">
-            <h:outputText value="#{tituloSucursal}"/>
+            <h:outputText value="Formulario para nuevos Proveedores"/>
         </f:facet>
-        <h:form id="crearForm">
-            <h:commandButton value="Crear nueva Sucursal" action="NuevaSucursal.xhtml" class="btn btn-primary"/>
+        <h:link outcome="Proveedor" value="volver" class="btn btn-sm btn-primary my-2"/>
+        <h:form>
+            <h:panelGrid columns="2" class="table table-hover table-striped">
+
+                <h:outputLabel value="E-mail" for="correo"/>
+                <h:inputText id="correo" value="#{proveedorControlador.proveedor.correo}" class="form-control"/>
+                
+                <h:outputLabel value="Nombre Proveedor" for="nom_Proveedor"/>
+                <h:inputText id="nom_Proveedor" value="#{proveedorControlador.proveedor.nom_Proveedor}" class="form-control"/>
+                
+                <h:outputLabel value="Teléfono" for="telefono"/>
+                <h:inputText id="telefono" value="#{proveedorControlador.proveedor.telefono}" class="form-control"/>
+                
+                <h:outputLabel value="Dirección" for="direccion"/>
+                <h:inputText id="direccion" value="#{proveedorControlador.proveedor.direccion}" class="form-control"/>
+
+                <h:outputLabel value="Ciudad" for="ciudad"/>
+                <h:inputText id="ciudad" value="#{proveedorControlador.proveedor.ciudad}" class="form-control" />
+
+                <h:commandButton value="Guardar" action="#{proveedorControlador.guardarProveedor}" class="btn btn-primary"/>
+                
+                <h:inputHidden value="#{proveedorControlador.proveedor.codigo}"/>
+
+            </h:panelGrid>
+            
         </h:form>
-        <h:outputText value="No existen producto en la base de datos!" rendered="#{empty listadoSucursales}"/>
-        <h:dataTable value="#{listadoSucursales}" var="suc" rendered="#{not empty listadoSucursales}" class="table table-hover table-striped">
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Id"/>
-                </f:facet>
-                <h:outputText value="#{suc.id}"/>
-            </h:column>
-            
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Nombre"/>
-                </f:facet>
-                <h:outputText value="#{suc.name}"/>
-            </h:column>
-            
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Direccion"/>
-                </f:facet>
-                <h:outputText value="#{suc.direccion}"/>
-            </h:column>
-            
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Telefono"/>
-                </f:facet>
-                <h:outputText value="#{suc.telefono}"/>
-            </h:column>
-            
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Latitud"/>
-                </f:facet>
-                <h:outputText value="#{suc.latitud}"/>
-            </h:column>
-            
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Altitud"/>
-                </f:facet>
-                <h:outputText value="#{suc.altitud}"/>
-            </h:column>1
-                        
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Editar"/>
-                </f:facet>
-                <h:form id="editarForm">
-                    <h:commandLink value="editar" action="#{sucursalControlador.editar(suc.id)}" class="btn btn-sm btn-success"/>
-                </h:form>
-            </h:column>            
-            
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Eliminar"/>
-                </f:facet>
-                <h:form id="eliminarForm">
-                    <h:commandLink value="eliminar" action="#{sucursalControlador.eliminar(suc.id)}"
-                                   onclick="return confirm('esta seguro que desea eliminar?')" class="btn btn-sm btn-danger"/>
-                </h:form>
-            </h:column>
-            
-        </h:dataTable>
+
     </h:panelGrid>
-</div>      
-</div>
-</div>
-            
-            
+        
+     </div>            
+ </div>        
+ 
 <!-- Blank End -->
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">

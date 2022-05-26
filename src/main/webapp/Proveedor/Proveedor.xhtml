@@ -73,9 +73,9 @@
                         </div>
                     </div>
                     <a href="../Producto/Producto.xhtml" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Productos</a>
-                    <a href="Sucursal.xhtml" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Sucursales</a>
+                    <a href="../Sucursal/Sucursal.xhtml" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Sucursales</a>
                     <a href="../Empleado/Empleado.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Empleados</a>
-                    <a href="../Proveedor/Proveedor.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Proveedores</a>
+                    <a href="Proveedor.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Proveedores</a>
                     <a href="../Cliente/Clientes.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Clientes</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                     <div class="nav-item dropdown">
@@ -196,61 +196,61 @@
                         
      <h:panelGrid border="1" class="table">
         <f:facet name="header">
-            <h:outputText value="#{tituloSucursal}"/>
+            <h:outputText value="CRUD de Proveedores"/>
         </f:facet>
         <h:form id="crearForm">
-            <h:commandButton value="Crear nueva Sucursal" action="NuevaSucursal.xhtml" class="btn btn-primary"/>
+            <h:commandButton value="Crear nuevo Proveedor" action="NuevoProveedor.xhtml" class="btn btn-primary"/>
         </h:form>
-        <h:outputText value="No existen producto en la base de datos!" rendered="#{empty listadoSucursales}"/>
-        <h:dataTable value="#{listadoSucursales}" var="suc" rendered="#{not empty listadoSucursales}" class="table table-hover table-striped">
+        <h:outputText value="No existen producto en la base de datos!" rendered="#{empty listadoProveedor}"/>
+        <h:dataTable value="#{listadoProveedor}" var="pro" rendered="#{not empty listadoProveedor}" class="table table-hover table-striped">
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Id"/>
+                    <h:outputText value="Codigo"/>
                 </f:facet>
-                <h:outputText value="#{suc.id}"/>
+                <h:outputText value="#{pro.codigo}"/>
             </h:column>
             
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Nombre"/>
+                    <h:outputText value="Nombre Proveedor"/>
                 </f:facet>
-                <h:outputText value="#{suc.name}"/>
+                <h:outputText value="#{pro.nom_Proveedor}"/>
             </h:column>
             
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Direccion"/>
+                    <h:outputText value="E-mail"/>
                 </f:facet>
-                <h:outputText value="#{suc.direccion}"/>
+                <h:outputText value="#{pro.correo}"/>
             </h:column>
             
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Telefono"/>
+                    <h:outputText value="Teléfono"/>
                 </f:facet>
-                <h:outputText value="#{suc.telefono}"/>
+                <h:outputText value="#{pro.telefono}"/>
             </h:column>
             
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Latitud"/>
+                    <h:outputText value="Dirección"/>
                 </f:facet>
-                <h:outputText value="#{suc.latitud}"/>
-            </h:column>
-            
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Altitud"/>
-                </f:facet>
-                <h:outputText value="#{suc.altitud}"/>
-            </h:column>1
+                <h:outputText value="#{pro.direccion}"/>
+            </h:column> 
                         
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Ciudad"/>
+                </f:facet>
+                <h:outputText value="#{pro.ciudad}"/>
+            </h:column> 
+            
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Editar"/>
                 </f:facet>
                 <h:form id="editarForm">
-                    <h:commandLink value="editar" action="#{sucursalControlador.editar(suc.id)}" class="btn btn-sm btn-success"/>
+                    <h:commandLink value="editar" action="#{proveedorControlador.editar(pro.codigo)}" class="btn btn-sm btn-success"/>
                 </h:form>
             </h:column>            
             
@@ -259,7 +259,7 @@
                     <h:outputText value="Eliminar"/>
                 </f:facet>
                 <h:form id="eliminarForm">
-                    <h:commandLink value="eliminar" action="#{sucursalControlador.eliminar(suc.id)}"
+                    <h:commandLink value="eliminar" action="#{proveedorControlador.eliminar(pro.codigo)}"
                                    onclick="return confirm('esta seguro que desea eliminar?')" class="btn btn-sm btn-danger"/>
                 </h:form>
             </h:column>
