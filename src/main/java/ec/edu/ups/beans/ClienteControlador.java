@@ -66,12 +66,12 @@ public class ClienteControlador {
             this.clienteFacade.guardarCliente(cliente);
         } catch (Exception e) {
         }
-        return "CrudClientes.xhtml?faces-redirect=true";
+        return "Clientes.xhtml?faces-redirect=true";
     }
     
     public String eliminar(int id){
         clienteFacade.eliminar(id);
-        return "CrudClientes.xhtml?faces-redirect=true";
+        return "Clientes.xhtml?faces-redirect=true";
     }
     
     @Produces
@@ -92,7 +92,7 @@ public class ClienteControlador {
                     this.cliente = e;
             });
         }
-        return "CrearCliente.xhtml";
+        return "Formulario.xhtml";
     }
     
 }

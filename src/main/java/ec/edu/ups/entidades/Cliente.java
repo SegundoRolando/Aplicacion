@@ -21,7 +21,6 @@ public class Cliente implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int codigo;
     private String nombre;
     private String cedula;
     private String apellido;
@@ -32,9 +31,8 @@ public class Cliente implements Serializable{
     public Cliente() {
     }
 
-    public Cliente(int id, int codigo, String nombre, String cedula, String apellido, String telefono, String correo, String direccion) {
+    public Cliente(int id, String nombre, String cedula, String apellido, String telefono, String correo, String direccion) {
         this.id = id;
-        this.codigo = codigo;
         this.nombre = nombre;
         this.cedula = cedula;
         this.apellido = apellido;
@@ -58,14 +56,6 @@ public class Cliente implements Serializable{
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-    
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
 
     public String getCedula() {
@@ -110,7 +100,7 @@ public class Cliente implements Serializable{
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", cedula=" + cedula 
+        return "Cliente{" + "id=" + id  + ", nombre=" + nombre + ", cedula=" + cedula 
                 + ", apellido=" + apellido + ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + '}';
     }
 
