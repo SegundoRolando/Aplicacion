@@ -178,7 +178,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="../LogIn.xhtml" class="dropdown-item">Cerrar Sesión</a>
                         </div>
                     </div>
                 </div>
@@ -197,14 +197,20 @@
         <h:form>
             <h:panelGrid columns="2" class="table table-hover table-striped">
 
-                <h:outputLabel value="Nombre" for="nombre"/>
-                <h:inputText id="nombre" value="#{empleadoControlador.empleado.name}" class="form-control"/>
+                <h:outputLabel value="Nombre" for="Nombre"/>
+                <h:inputText id="Nombre" value="#{empleadoControlador.empleado.name}" class="form-control"/>
 
-                <h:outputLabel value="Password" for="password"/>
-                <h:inputText id="password" value="#{empleadoControlador.empleado.password}" class="form-control"/>
+                <h:outputLabel value="Apellido" for="Apellido"/>
+                <h:inputText id="passApellidoword" value="#{empleadoControlador.empleado.apellido}" class="form-control"/>
 
-                <h:outputLabel value="Nivel" for="nivel"/>
-                <h:inputText id="nivel" value="#{empleadoControlador.empleado.level}" class="form-control"/>
+                <h:outputLabel value="Cedula" for="Cedula"/>
+                <h:inputText id="Cedula" value="#{empleadoControlador.empleado.cedula}" class="form-control"/>
+                
+                <h:outputLabel value="Correo" for="Correo"/>
+                <h:inputText id="Correo" value="#{empleadoControlador.empleado.correo}" class="form-control"/>
+                
+                <h:outputLabel value="Cargo" for="Cargo"/>
+                <h:inputText id="Cargo" value="#{empleadoControlador.empleado.cargo}" class="form-control"/>
 
                 <h:commandButton value="Crear" action="#{empleadoControlador.guardar}" class="btn btn-primary"/>
                 

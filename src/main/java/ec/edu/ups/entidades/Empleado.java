@@ -22,17 +22,21 @@ public class Empleado implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String password;
-    private int level;
+    private String apellido;
+    private String cedula;
+    private String correo;
+    private String cargo;
 
     public Empleado() {
     }
 
-    public Empleado(Long id, String name, String password, int level) {
+    public Empleado(Long id, String name, String apellido, String cedula, String correo, String cargo) {
         this.id = id;
         this.name = name;
-        this.password = password;
-        this.level = level;
+        this.apellido = apellido;
+        this.cedula = cedula;
+        this.correo = correo;
+        this.cargo = cargo;
     }
 
     public Long getId() {
@@ -51,25 +55,41 @@ public class Empleado implements Serializable{
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public int getLevel() {
-        return level;
+    public String getCedula() {
+        return cedula;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     @Override
     public String toString() {
-        return "Empleado{" + "id=" + id + ", name=" + name + ", password=" + password + ", level=" + level + '}';
+        return "Empleado{" + "id=" + id + ", name=" + name + ", apellido=" + apellido + ", cedula=" + cedula + ", correo=" + correo + ", cargo=" + cargo + '}';
     }
-        
+
 }

@@ -178,7 +178,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="../LogIn.xhtml" class="dropdown-item">Cerrar Sesión</a>
                         </div>
                     </div>
                 </div>
@@ -219,16 +219,30 @@
             
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Password"/>
+                    <h:outputText value="Apellido"/>
                 </f:facet>
-                <h:outputText value="#{emp.password}"/>
+                <h:outputText value="#{emp.apellido}"/>
             </h:column>
             
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Nivel de empleado"/>
+                    <h:outputText value="Cédula"/>
                 </f:facet>
-                <h:outputText value="#{emp.level}"/>
+                <h:outputText value="#{emp.cedula}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Correo"/>
+                </f:facet>
+                <h:outputText value="#{emp.correo}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Cargo"/>
+                </f:facet>
+                <h:outputText value="#{emp.cargo}"/>
             </h:column>
                         
             <h:column>

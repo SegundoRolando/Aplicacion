@@ -56,4 +56,10 @@ public class EmpleadoFacade extends AbstractFacade<Empleado>{
         return Optional.ofNullable(BuscoPorId(id));
     }
     
+    public Empleado cargo(String correo){
+        return em.createQuery("select p from Empleado p where p.correo=:correo", Empleado.class)
+                .setParameter("correo", correo)
+                .getSingleResult();
+    }
+    
 }

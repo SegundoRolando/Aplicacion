@@ -11,41 +11,42 @@ import java.io.Serializable;
  * @author rolan
  */
 //@NamedQuery(name = "getByLevel", query = "SELECT u from User u Where u.level >= :level")
-@NamedQuery(name = "getUser", query = "SELECT u FROM  User u")
+@NamedQuery(name = "getUser", query = "SELECT u FROM  Usuario u")
 @Entity
-public class User implements Serializable{
+public class Usuario implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
+    private Long id;
+    private String correo;
     private String password;
-    private int id_rol;
+    private String rol;
  
-    public User() {
+    public Usuario() {
     }
 
-    public User(int id, String name, String password, int id_rol) {
+    public Usuario(Long id, String correo, String password, String rol) {
         this.id = id;
-        this.name = name;
+        this.correo = correo;
         this.password = password;
-        this.id_rol = id_rol;
+        this.rol = rol;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
+
 
     public String getPassword() {
         return password;
@@ -55,17 +56,17 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public int getId_rol() {
-        return id_rol;
+    public String getRol() {
+        return rol;
     }
 
-    public void setId_rol(int id_rol) {
-        this.id_rol = id_rol;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", password=" + password + ", id_rol=" + id_rol + '}';
+        return "Usuario{" + "id=" + id + ", correo=" + correo + ", password=" + password + ", rol=" + rol + '}';
     }
-    
+
 }

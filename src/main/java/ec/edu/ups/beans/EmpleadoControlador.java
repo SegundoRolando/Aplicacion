@@ -24,6 +24,7 @@ public class EmpleadoControlador {
     private EmpleadoFacade empleadoFacade;
     private Empleado empleado;
     private Long id;
+    private String correo;
     
     @Produces
     @Model
@@ -51,7 +52,23 @@ public class EmpleadoControlador {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
+    public EmpleadoFacade getEmpleadoFacade() {
+        return empleadoFacade;
+    }
+
+    public void setEmpleadoFacade(EmpleadoFacade empleadoFacade) {
+        this.empleadoFacade = empleadoFacade;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
     @Produces
     @RequestScoped
     @Named("listadoEmpleados")
@@ -95,4 +112,15 @@ public class EmpleadoControlador {
         return "NuevoEmpleado.xhtml";
     }
     
+    public String validar(String correo){
+        Empleado comp = empleadoFacade.cargo(correo);
+        String comparar = comp.getCargo();
+        if (comparar.equals("Administrador")){
+            return "Admin.xhtml?faces-redirect=true";
+        }
+        if(comparar.equals("Empleado")){
+            return "Empleado/Empleado.xhtml?faces-redirect=true";
+        }
+        return "LogIn.xhtml?faces-redirect=true";
+    }
 }
