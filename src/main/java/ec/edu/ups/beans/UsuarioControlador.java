@@ -55,7 +55,7 @@ public class UsuarioControlador {
     
     public String guardar(){
         this.userFacade.guardarU(user);
-        return "tabUsers.xhtml?faces-redirect=true";
+        return "Usuario.xhtml?faces-redirect=true";
     }
    
     @Produces
@@ -73,12 +73,12 @@ public class UsuarioControlador {
                     this.user = u;
             });
         }
-        return "formUsers.xhtml";
+        return "NuevoUsuario.xhtml";
     }
      
     public String eliminar(Long codigo){
          userFacade.eliminar(codigo);
-        return "tabUsers.xhtml?faces-redirect=true";
+        return "Usuario.xhtml?faces-redirect=true";
         
     }
     
