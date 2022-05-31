@@ -54,10 +54,20 @@
                             <h3 class="text-primary">Inicio de sesión</h3>
                         </div>
                         <h:form>
-                            <h:outputLabel value="Correo" for="correo"/>
-                            <h:inputText id="correo"  class="form-control" value="#{usuarioControlador.user.correo}"/>
+                            
+                            <h:outputLabel value="Correo" for="correo" />
+                           <p:inputText id="email" required="true" label="Requiere un E-mail" size="35"
+                            requiredMessage="Please enter your email address."
+                            validatorMessage="Ivalido e Intente nuevo"
+                            value="#{usuarioControlador.user.correo}">
+                            <f:validateRegex
+                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                             </p:inputText>
+                            <p:watermark for="email" value="Email Address *" />
+                            <p:message for="email" />
                             <h:outputLabel value="Contraseña" for="password"/>
-                            <h:inputSecret id="password"  class="form-control" value="#{usuarioControlador.user.password}"/>
+                            <h:inputSecret id="password"  class="form-control" value="#{usuarioControlador.user.password}" required="true" label="Requiere una contraseña"/>
+                            <h:message for="password"/>
                             <br></br>
                             <h:commandButton value="Iniciar Sesion" action="#{usuarioControlador.validar(usuarioControlador.user.correo,usuarioControlador.user.password)}" class="btn btn-primary"/>
                         

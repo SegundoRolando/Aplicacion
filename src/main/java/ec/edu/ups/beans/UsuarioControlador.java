@@ -7,8 +7,14 @@ import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.inject.Model;
 import jakarta.enterprise.inject.Produces;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIInput;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 
@@ -96,4 +102,20 @@ public class UsuarioControlador {
         }
         return "LogIn.xhtml?faces-redirect=true";
     }
+     public boolean validarEmail(String email) {
+        // Patron para validar el email
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher mather = pattern.matcher(email);
+        return mather.find();
+    }
+     
+     public void validarText(FacesContext facesContext,UIComponent toValidate,Object value){
+         facesContext = FacesContext.getCurrentInstance();
+         String texto = (String) value;
+         if(!texto.equalsIgnoreCase("M") && !texto.equalsIgnoreCase("F")){
+             ((UIInput)toValidate).setValid(false);
+             facesContext.addMessage(toValidate.getClientId(facesContext), new FacesMessage("Sexo no valido"));
+         }
+     }
+    
 }

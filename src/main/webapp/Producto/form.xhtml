@@ -197,28 +197,29 @@
         <h:form>
             <h:panelGrid columns="3" class="table table-hover table-striped">
                 
-                <h:outputLabel value="Nombre" for="nombre" class="col-form-label"/>
-                <h:inputText id="nombre" value="#{productoControlador.producto.nombre}" class="form-control"/>
+                <h:outputLabel value="Nombre" for="nombre" class="col-form-label" />
+                <h:inputText id="nombre" value="#{productoControlador.producto.nombre}" class="form-control" required="true" label="Requiere un nombre del producto"/>
                 <h:message for="nombre" style="color:red;"/>
                 
                 <h:outputLabel value="Precio" for="precio" class="col-form-label"/>
-                <h:inputText id="precio" value="#{productoControlador.producto.precio}" class="form-control"/>
+                <h:inputText id="precio" value="#{productoControlador.producto.precio}" class="form-control" required="true" label="Campo Numérico"/>
                 <h:message for="precio" style="color:red;"/>
-
+            
                 <h:outputLabel value="stock" for="Stock" class="col-form-label"/>
-                <h:inputText id="stock" value="#{productoControlador.producto.stock}" class="form-control"/>
+                <h:inputText id="stock" value="#{productoControlador.producto.stock}" class="form-control" required="true" label="Campo Numérico"/>
                 <h:message for="stock" style="color:red;"/>
                 
                 <h:outputLabel value="Categoria" for="categoria" class="col-form-label"/>
-                <h:selectOneMenu id="categoria" value="#{productoControlador.producto.categoria}" class="form-select">
+                <h:selectOneMenu id="categoria" value="#{productoControlador.producto.categoria}" class="form-select" required="true" label="Selecione una Categoria">
                     <f:selectItem itemLabel="--- Seleccione una Categoria ---" itemValue="#{null}"/>
                     <f:selectItems value="#{listadoCategorias}" var="cat" itemLabel="#{cat.nombre}"/>
                     <f:converter binding="#{categoriaConverter}"/>
+                    
                 </h:selectOneMenu>
                 <h:message for="categoria" style="color:red;"/>
                 
                  <h:outputLabel value="Sucursal" for="sucursal" class="col-form-label"/>
-                <h:selectOneMenu id="sucursal" value="#{productoControlador.sucursal.id}" class="form-select">
+                <h:selectOneMenu id="sucursal" value="#{productoControlador.sucursal.id}" class="form-select" required="true" label="Selecione una Categoria">
                     <f:selectItem itemLabel="--- Seleccione una Sucursal ---" itemValue="#{null}"/>
                     <f:selectItems value="#{listadoSucursales}" var="sur" itemLabel="#{sur.name}" itemValue="#{sur.id}"/>
                     
@@ -227,7 +228,7 @@
                 
                 
                 <h:outputLabel value="des" for="Descripción" class="col-form-label"/>
-                <h:inputText id="des" value="#{productoControlador.producto.descripcion}" class="form-control"/>
+                <h:inputText id="des" value="#{productoControlador.producto.descripcion}" class="form-control" required="true" label="Requiere una descripcion"/>
                 <h:message for="des" style="color:red;"/>
 
                 <h:commandButton value="Crear" action="#{productoControlador.guardar}" class="btn btn-primary"/>
