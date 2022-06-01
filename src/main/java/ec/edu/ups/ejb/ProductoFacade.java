@@ -44,6 +44,8 @@ public class ProductoFacade extends AbstractFacade<Producto> {
                 .setParameter("id", id)
                 .getSingleResult();
     }
+    
+    
     public void eliminar(Long id) {
         Producto producto = porId(id);
         em.remove(producto);

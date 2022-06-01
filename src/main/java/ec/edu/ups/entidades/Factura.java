@@ -5,9 +5,16 @@
 package ec.edu.ups.entidades;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -16,65 +23,47 @@ import java.time.LocalDate;
 @Entity
 public class Factura implements Serializable{
     @Id
-    private Long id;
-    private String nombre;
-    private String apellido;
-    private String cedula;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private double total;
     private LocalDate fecha;
     private double subtotal;
     private double iva;
-    private double total;
-    private int numFactura;
     private Sucursal sucursal;
+    @OneToOne
+    @JoinColumn
     private Cliente cliente;
-
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<FacturaDetalle> detalles;
+    
     public Factura() {
     }
 
-    public Factura(Long id, String nombre, String apellido, String cedula, LocalDate fecha, double subtotal, double iva, double total, int numFactura, Sucursal sucursal, Cliente cliente) {
+    public Factura(int id, double total, LocalDate fecha, double subtotal, double iva, Sucursal sucursal, Cliente cliente, List<FacturaDetalle> detalles) {
         this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.cedula = cedula;
+        this.total = total;
         this.fecha = fecha;
         this.subtotal = subtotal;
         this.iva = iva;
-        this.total = total;
-        this.numFactura = numFactura;
         this.sucursal = sucursal;
         this.cliente = cliente;
+        this.detalles = detalles;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public double getTotal() {
+        return total;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public LocalDate getFecha() {
@@ -101,22 +90,6 @@ public class Factura implements Serializable{
         this.iva = iva;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public int getNumFactura() {
-        return numFactura;
-    }
-
-    public void setNumFactura(int numFactura) {
-        this.numFactura = numFactura;
-    }
-
     public Sucursal getSucursal() {
         return sucursal;
     }
@@ -133,9 +106,17 @@ public class Factura implements Serializable{
         this.cliente = cliente;
     }
 
+    public List<FacturaDetalle> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<FacturaDetalle> detalles) {
+        this.detalles = detalles;
+    }
+
     @Override
     public String toString() {
-        return "Factura{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", fecha=" + fecha + ", subtotal=" + subtotal + ", iva=" + iva + ", total=" + total + ", numFactura=" + numFactura + ", sucursal=" + sucursal + ", cliente=" + cliente + '}';
+        return "Factura{" + "id=" + id + ", total=" + total + ", fecha=" + fecha + ", subtotal=" + subtotal + ", iva=" + iva + ", sucursal=" + sucursal + ", cliente=" + cliente + ", detalles=" + detalles + '}';
     }
     
 }

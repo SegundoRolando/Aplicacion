@@ -1,7 +1,11 @@
 package ec.edu.ups.entidades;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 /**
  *
@@ -10,17 +14,20 @@ import jakarta.persistence.Id;
 @Entity
 public class FacturaDetalle {
     @Id
-    private Long id;
+    private int id;
     private int cantidad;
     private double precio;
     private String descripcion;
     private double totalXproducto;
     private Producto producto;
-
+    @ManyToOne
+    @JoinColumn
+    private Factura factura;
+    
     public FacturaDetalle() {
     }
 
-    public FacturaDetalle(Long id, int cantidad, double precio, String descripcion, double totalXproducto) {
+    public FacturaDetalle(int id, int cantidad, double precio, String descripcion, double totalXproducto) {
         this.id = id;
         this.cantidad = cantidad;
         this.precio = precio;
@@ -30,7 +37,7 @@ public class FacturaDetalle {
 
     
     
-    public FacturaDetalle(Long id, int cantidad, double precio, double totalXproducto, Producto producto) {
+    public FacturaDetalle(int id, int cantidad, double precio, double totalXproducto, Producto producto) {
         this.id = id;
         this.cantidad = cantidad;
         this.precio = precio;
@@ -38,11 +45,11 @@ public class FacturaDetalle {
         this.producto = producto;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

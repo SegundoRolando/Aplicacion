@@ -4,12 +4,19 @@
  */
 package ec.edu.ups.entidades;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -22,13 +29,14 @@ public class Cliente implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombre;
-    
     private String cedula;
     private String apellido;
     private String telefono;
     private String correo;
     private String direccion;
-
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "cliente")
+    private Factura factura;
+    
     public Cliente() {
     }
 
@@ -103,6 +111,10 @@ public class Cliente implements Serializable{
     public String toString() {
         return "Cliente{" + "id=" + id  + ", nombre=" + nombre + ", cedula=" + cedula 
                 + ", apellido=" + apellido + ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + '}';
+    }
+
+    public void setId(Long idCliente) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
