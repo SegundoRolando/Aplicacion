@@ -63,23 +63,18 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="../Admin.xhtml" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
+                    <a href="Producto_1.xhtml" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Facturas</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="../Factura/factura.xhtml" class="dropdown-item">Crear una Factura</a>
+                            <a href="../Factura/factura_1.xhtml" class="dropdown-item">Crear una Factura</a>
                             <a href="button.html" class="dropdown-item">Listar Facturas</a>
                             <a href="typography.html" class="dropdown-item">Typography</a>
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div>
-                    <a href="../Producto/Producto.xhtml" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Productos</a>
-                    <a href="../Sucursal/Sucursal.xhtml" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Sucursales</a>
-                    <a href="Usuario.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Empleados</a>
-                    <a href="../Proveedor/Proveedor.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Proveedores</a>
-                    <a href="../Cliente/Clientes.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Clientes</a>
-                    <a href="../Usuario/Usuario.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Usuarios</a>
-                    <a href="kardex.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Inventario</a>
+                    <a href="../Producto/Producto_1.xhtml" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Productos</a>  
+                    <a href="Clientes_1.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Clientes</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
@@ -192,68 +187,81 @@
             <!-- Blank Start -->
             
             
- <div class="container-fluid pt-4 px-4">
-<div class="bg-light rounded-top p-4">
-       
-   <div class="table-responsive">
-                        
-     <h:panelGrid border="1" class="table">
-        <f:facet name="header">
-            <h:outputText value="Crud Usuario"/>
-        </f:facet>
-        <h:form id="crearForm">
-            <h:commandButton value="Crear nuevo Usuario" action="NuevoUsuario.xhtml" class="btn btn-primary"/>
-        </h:form>
-        <h:outputText value="No existen producto en la base de datos!" rendered="#{empty listadoUsario}"/>
-        <h:dataTable value="#{listadoUsario}" var="users" rendered="#{not empty listadoUsario}" class="table table-hover table-striped">
-            <h:column>
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light rounded-top p-4">
+        <div class="table-responsive">
+            <h:panelGrid border="1" class="table">
                 <f:facet name="header">
-                    <h:outputText value="Id"/>
+                    <h:outputText value="#{tituloCliente}"/>
                 </f:facet>
-                <h:outputText value="#{users.id}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="E-mail"/>
-                </f:facet>
-                <h:outputText value="#{users.correo}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Contraseña"/>
-                </f:facet>
-                <h:outputText value="#{users.password}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Rol"/>
-                </f:facet>
-                <h:outputText value="#{users.rol}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Editar"/>
-                </f:facet>
-                <h:form id="editarForm">
-                    <h:commandLink value="editar" action="#{usuarioControlador.editar(users.id)}" class="btn btn-sm btn-success"/>
+                <h:form id="crearForm">
+                    <h:commandButton value="Crear Cliente" action="Formulario_1.xhtml" class="btn btn-primary"/>
                 </h:form>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Eliminar"/>
-                </f:facet>
-                <h:form id="eliminarForm">
-                    <h:commandLink value="eliminar" action="#{usuarioControlador.eliminar(users.id)}"
-                                   onclick="return confirm('esta seguro que desea eliminar?')" class="btn btn-sm btn-danger"/>
-                </h:form>
-            </h:column>
-        </h:dataTable>
-    </h:panelGrid>
-</div>      
+                <h:outputText value="No existen clientes en la base de datos!" rendered="#{empty listadoClientes}"/>
+                <h:dataTable value="#{listadoClientes}" var="cli" rendered="#{not empty listadoClientes}" class="table table-hover table-striped">
+                    <h:column>
+                        <f:facet name="header">
+                        <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{cli.id}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nombre"/>
+                        </f:facet>
+                        <h:outputText value="#{cli.nombre}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Apellido"/>
+                        </f:facet>
+                        <h:outputText value="#{cli.apellido}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cedula"/>
+                        </f:facet>
+                        <h:outputText value="#{cli.cedula}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Telefono"/>
+                        </f:facet>
+                        <h:outputText value="#{cli.telefono}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Correo"/>
+                        </f:facet>
+                        <h:outputText value="#{cli.correo}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Direccion"/>
+                        </f:facet>
+                        <h:outputText value="#{cli.direccion}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Editar"/>
+                        </f:facet>
+                        <h:form id="editarForm">
+                            <h:commandLink value="editar" action="#{clienteControlador.editarEmp(cli.id)}" class="btn btn-sm btn-success"/>
+                        </h:form>
+                    </h:column>            
+
+                </h:dataTable>
+            </h:panelGrid>
+        </div>      
+    </div>
 </div>
-</div>
-            
-            
 <!-- Blank End -->
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">

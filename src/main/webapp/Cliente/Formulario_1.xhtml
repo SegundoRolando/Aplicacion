@@ -33,6 +33,7 @@
 
     <!-- Template Stylesheet -->
     <link href="../Recursos/css/style.css" rel="stylesheet"/>
+  
 </h:head>
 
     <h:body>
@@ -63,23 +64,18 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="../Admin.xhtml" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
+                    <a href="Producto_1.xhtml" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Facturas</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="../Factura/factura.xhtml" class="dropdown-item">Crear una Factura</a>
+                            <a href="../Factura/factura_1.xhtml" class="dropdown-item">Crear una Factura</a>
                             <a href="button.html" class="dropdown-item">Listar Facturas</a>
                             <a href="typography.html" class="dropdown-item">Typography</a>
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div>
-                    <a href="../Producto/Producto.xhtml" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Productos</a>
-                    <a href="../Sucursal/Sucursal.xhtml" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Sucursales</a>
-                    <a href="Usuario.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Empleados</a>
-                    <a href="../Proveedor/Proveedor.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Proveedores</a>
-                    <a href="../Cliente/Clientes.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Clientes</a>
-                    <a href="../Usuario/Usuario.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Usuarios</a>
-                    <a href="kardex.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Inventario</a>
+                    <a href="../Producto/Producto_1.xhtml" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Productos</a>  
+                    <a href="Clientes_1.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Clientes</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
@@ -189,71 +185,82 @@
             <!-- Navbar End -->
 
 
-            <!-- Blank Start -->
-            
-            
- <div class="container-fluid pt-4 px-4">
-<div class="bg-light rounded-top p-4">
-       
-   <div class="table-responsive">
-                        
-     <h:panelGrid border="1" class="table">
+<!-- Blank Start -->
+  <div class="container-fluid pt-4 px-4 p-0">
+      <div class="bg-light rounded-top p-4 ">
+        <h:panelGrid border="1" class="table">
         <f:facet name="header">
-            <h:outputText value="Crud Usuario"/>
+            <h:outputText value="Formulario Cliente"/>
         </f:facet>
-        <h:form id="crearForm">
-            <h:commandButton value="Crear nuevo Usuario" action="NuevoUsuario.xhtml" class="btn btn-primary"/>
+        <h:link outcome="Clientes_1" value="volver" class="btn btn-sm btn-primary my-2"/>
+        <h:form>
+            <h:panelGrid columns="1">
+                <!-- Nombre -->
+                <h:outputLabel value="Nombre" for="nombre"/>
+                <h:inputText id="nombre" value="#{clienteControlador.cliente.nombre}" size="50"
+                             class="form-control" required="true" requiredMessage="Ingrese su nombre."
+                             validatorMessage="Inválido e intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
+                </h:inputText>
+                <p:watermark for="nombre" value="Ingrese su nombre." />
+                <p:message for="nombre" />
+                <!-- Apellido -->
+                <h:outputLabel value="Apellido" for="apellido"/>
+                <h:inputText id="apellido" value="#{clienteControlador.cliente.apellido}" size="50"
+                            class="form-control" required="true" requiredMessage="Ingrese su apellido." 
+                            validatorMessage="Inválido e intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z -\s]+$"/>
+                </h:inputText>
+                <p:watermark for="apellido" value="Ingrese su apellido." />
+                <p:message for="apellido"/>
+                 <!-- Cédula -->
+                <h:outputLabel value="Cédula" for="cedula"/>
+                <h:inputText id="cedula" value="#{clienteControlador.cliente.cedula}" size="50"
+                            class="form-control" required="true" requiredMessage="Ingrese su cédula." 
+                            validatorMessage="Cédula inválida">
+                <f:validateLength minimum = "10" maximum = "10" /> </h:inputText>
+                <p:watermark for="cedula" value="Ingrese su cédula." />
+                <p:message for="cedula" />
+                <!-- Telefono -->
+                <h:outputLabel value="Teléfono" for="telefono"/>  
+                <h:inputText id="telefono" value="#{clienteControlador.cliente.telefono}" size="50"
+                             class="form-control" required="true"  requiredMessage="Ingrese su número telefónico." 
+                             validatorMessage="Ingrese un número válido">
+                <f:validateLength minimum = "7" maximum = "10" /> </h:inputText>
+                <p:watermark for="telefono" value="Ingrese su número telefónico." />
+                <p:message for="telefono" /> 
+                
+                <!-- E-mail -->
+                <h:outputLabel value="E-mail" for="correo" />
+                <h:inputText id="correo" value="#{clienteControlador.cliente.correo}" size="50"
+                             class="form-control" required="true" requiredMessage="Ingrese su correo electrónico." 
+                             validatorMessage="Correo electrónico inválido">
+                <f:validateRegex
+                 pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                </h:inputText>
+                <p:watermark for="correo" value="Ingrese su correo electrónico." />
+                <p:message for="correo" /> 
+                
+                <!-- Direccion -->
+                <h:outputLabel value="Dirección" for="direccion"/>
+                <h:inputText id="direccion" value="#{clienteControlador.cliente.direccion}" size="50"
+                             class="form-control" required="true" requiredMessage="Ingrese su dirección." 
+                             validatorMessage="IIngrese una dirección válida">
+                    <f:validateRegex pattern="^[a-zA-Z-\s-.-/-0-9]+$"/>
+                </h:inputText>
+                <p:watermark for="direccion" value="Ingrese su dirección." />
+                <p:message for="direccion" />
+                <!-- Botón crear -->
+                <h:commandButton value="Crear" action="#{clienteControlador.guardarEmp}" class="btn btn-primary"/>
+                <h:inputHidden value="#{clienteControlador.cliente.id}"/>
+            </h:panelGrid>
         </h:form>
-        <h:outputText value="No existen producto en la base de datos!" rendered="#{empty listadoUsario}"/>
-        <h:dataTable value="#{listadoUsario}" var="users" rendered="#{not empty listadoUsario}" class="table table-hover table-striped">
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Id"/>
-                </f:facet>
-                <h:outputText value="#{users.id}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="E-mail"/>
-                </f:facet>
-                <h:outputText value="#{users.correo}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Contraseña"/>
-                </f:facet>
-                <h:outputText value="#{users.password}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Rol"/>
-                </f:facet>
-                <h:outputText value="#{users.rol}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Editar"/>
-                </f:facet>
-                <h:form id="editarForm">
-                    <h:commandLink value="editar" action="#{usuarioControlador.editar(users.id)}" class="btn btn-sm btn-success"/>
-                </h:form>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Eliminar"/>
-                </f:facet>
-                <h:form id="eliminarForm">
-                    <h:commandLink value="eliminar" action="#{usuarioControlador.eliminar(users.id)}"
-                                   onclick="return confirm('esta seguro que desea eliminar?')" class="btn btn-sm btn-danger"/>
-                </h:form>
-            </h:column>
-        </h:dataTable>
+
     </h:panelGrid>
-</div>      
-</div>
-</div>
-            
-            
+        
+     </div>            
+ </div>        
+ 
 <!-- Blank End -->
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">

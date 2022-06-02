@@ -95,7 +95,7 @@ public class UsuarioControlador {
             return "Admin.xhtml?faces-redirect=true";
         }
         if(comparar.equals("Empleado")){
-            return "Empleado/Empleado.xhtml?faces-redirect=true";
+            return "Producto/Producto_1.xhtml?faces-redirect=true";
         }
         if(comparar.equals("Cliente")){
             return "Cliente/Clientes.xhtml?faces-redirect=true";

@@ -63,11 +63,12 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="../Admin.xhtml" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="../Admin.xhtml" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Facturas</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Buttons</a>
+                            <a href="../Factura/factura.xhtml" class="dropdown-item">Crear una Factura</a>
+                            <a href="button.html" class="dropdown-item">Listar Facturas</a>
                             <a href="typography.html" class="dropdown-item">Typography</a>
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
@@ -78,6 +79,7 @@
                     <a href="../Proveedor/Proveedor.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Proveedores</a>
                     <a href="../Cliente/Clientes.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Clientes</a>
                     <a href="../Usuario/Usuario.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Usuarios</a>
+                    <a href="kardex.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Inventario</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
@@ -190,7 +192,7 @@
 <!-- Blank Start -->
   <div class="container-fluid pt-4 px-4">
       <div class="bg-light rounded-top p-4">
-         <h:panelGrid border="1">
+        <h:panelGrid border="1" class="table" >
         <f:facet name="header">
             <h:outputText value="Formulario de Usuarios"/>
         </f:facet>
@@ -199,30 +201,30 @@
             <h:panelGrid columns="1" >
                 <!-- E-mail -->
                 <h:outputLabel value="E-mail" for="email"/>
-                <h:inputText id="email" value="#{usuarioControlador.user.correo}" size="50"
-                             class="form-control" required="true" requiredMessage="Please enter your E-mail." 
-                             validatorMessage="Inválido e Intente nuevo">
+                <h:inputText id="correo" value="#{usuarioControlador.user.correo}" size="50"
+                             class="form-control" required="true" requiredMessage="Ingrese su correo electrónico." 
+                             validatorMessage="Correo inválido">
                 <f:validateRegex
                  pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
                 </h:inputText>
-                <p:watermark for="correo" value="Write E-mail" />
+                <p:watermark for="correo" value="Ingrese su correo electrónico." />
                 <p:message for="correo" /> 
                 
                 <h:outputLabel value="Contraseña"  for="contrasenia"/>
                 <h:inputSecret id="contrasenia" value="#{usuarioControlador.user.password}" size="60"
-                               class="form-control" required="true" requiredMessage="Please enter Password"
-                            validatorMessage="Inválido e Intente nuevo">
+                               class="form-control" required="true" requiredMessage="Ingrese su contraseña."
+                            validatorMessage="Contraseña inválida">
                      </h:inputSecret>
-                <p:watermark for="contrasenia" value="write Password" />
+                <p:watermark for="contrasenia" value="Ingrese su contraseña." />
                 <p:message for="contrasenia" />
                 
                 <h:outputLabel value="Rol" for="rol"/>
                 <h:inputText id="rol" value="#{usuarioControlador.user.rol}"  size="60" 
-                            class="form-control" required="true" requiredMessage="Please enter Rol"
-                            validatorMessage="Inválido e Intente nuevo">
+                            class="form-control" required="true" requiredMessage="Ingrese el rol."
+                            validatorMessage="Rol no permitido">
                     <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
                 </h:inputText>
-                <p:watermark for="rol" value="write Rol" />
+                <p:watermark for="rol" value="Ingrese el rol." />
                 <p:message for="rol" />
                 
                 <h:commandButton value="Crear" action="#{usuarioControlador.guardar}" class="btn btn-primary"/>

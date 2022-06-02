@@ -62,15 +62,14 @@
                             <f:validateRegex
                              pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
                             </h:inputText>
-                            <p:watermark for="email" value="Email Address" />
-                            <p:message for="email" />
+                            <p:watermark for="email" value="Correo Electrónico" />
+                            <p:message for="email"/>                        
                             <!-- Contraseña -->
-                            
                             <h:outputLabel value="Contraseña" for="password"/>
                             <h:inputSecret id="password"  value="#{usuarioControlador.user.password}"  size="33" 
-                                           class="form-control" required="true" requiredMessage="Please enter your Password."
-                                           validatorMessage="Inválido e Intente nuevo"/>
-                             <p:watermark for="password" value="Password" />
+                                           class="form-control" required="true" requiredMessage="Por favor ingrese su contraseña."
+                                           validatorMessage="Inválido e intente nuevo"/>
+                             <p:watermark for="password" value="Contraseña" />
                             <h:message for="password"/>
                             <br></br>
                             <h:commandButton value="Iniciar Sesion" action="#{usuarioControlador.validar(usuarioControlador.user.correo,usuarioControlador.user.password)}" class="btn btn-primary"/>

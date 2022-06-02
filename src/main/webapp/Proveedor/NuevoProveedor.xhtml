@@ -63,11 +63,12 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="../Admin.xhtml" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="../Admin.xhtml" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Facturas</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Buttons</a>
+                            <a href="../Factura/factura.xhtml" class="dropdown-item">Crear una Factura</a>
+                            <a href="button.html" class="dropdown-item">Listar Facturas</a>
                             <a href="typography.html" class="dropdown-item">Typography</a>
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
@@ -78,6 +79,7 @@
                     <a href="Proveedor.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Proveedores</a>
                     <a href="../Cliente/Clientes.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Clientes</a>
                     <a href="../Usuario/Usuario.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Usuarios</a>
+                    <a href="kardex.xhtml" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Inventario</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
@@ -200,47 +202,47 @@
                  <!-- Direccion de correo electrónico -->
                 <h:outputLabel value="E-mail" for="correo"/>
                 <h:inputText id="correo" value="#{proveedorControlador.proveedor.correo}" size="50"
-                             class="form-control" required="true" requiredMessage="Please enter your E-mail." 
-                             validatorMessage="Inválido e Intente nuevo">
+                             class="form-control" required="true" requiredMessage="Ingrese su correo electrónico." 
+                             validatorMessage="Correo inválido">
                 <f:validateRegex
                  pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
                 </h:inputText>
-                <p:watermark for="correo" value="Write E-mail" />
+                <p:watermark for="correo" value="Ingrese su correo electrónico." />
                 <p:message for="correo" /> 
                 <!-- Nombre Proveedor -->
                 <h:outputLabel value="Nombre Proveedor" for="nom_Proveedor"/>
-                <h:inputText id="nom_Proveedor" value="#{proveedorControlador.proveedor.nom_Proveedor}" size="50"
-                             class="form-control" required="true" requiredMessage="Please enter your Firs Name."
-                             validatorMessage="Inválido e Intente nuevo">
+                <h:inputText id="nombre" value="#{proveedorControlador.proveedor.nom_Proveedor}" size="50"
+                             class="form-control" required="true" requiredMessage="Ingrese el nombre."
+                             validatorMessage="Inválido e intente nuevamente">
                     <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
                 </h:inputText>
-                <p:watermark for="nombre" value=" Write Name Proveedor" />
+                <p:watermark for="nombre" value="Ingrese el nombre." />
                 <p:message for="nombre" />
                 <!-- Teléfono -->
                 <h:outputLabel value="Teléfono" for="telefono"/>
                 <h:inputText id="telefono" value="#{proveedorControlador.proveedor.telefono}" size="50"
-                             class="form-control" required="true"  requiredMessage="Please enter your phone." 
-                             validatorMessage="Inválido e Intente nuevo">
+                             class="form-control" required="true"  requiredMessage="Ingrese su número telefónico." 
+                             validatorMessage="Número telefónico inválido">
                 <f:validateLength minimum = "7" maximum = "10" /> </h:inputText>
-                <p:watermark for="telefono" value="Write Phone" />
+                <p:watermark for="telefono" value="Ingrese su número telefónico." />
                 <p:message for="telefono" /> 
                 <!-- Dirección -->
                 <h:outputLabel value="Dirección" for="direccion"/>
                 <h:inputText id="direccion" value="#{proveedorControlador.proveedor.direccion}" size="50"
-                             class="form-control" required="true" requiredMessage="Please enter your Direction." 
-                             validatorMessage="Inválido e Intente nuevo">
+                             class="form-control" required="true" requiredMessage="Ingrese su dirección." 
+                             validatorMessage="Dirección inválida">
                     <f:validateRegex pattern="^[a-zA-Z-\s-.-/-0-9]+$"/>
                 </h:inputText>
-                <p:watermark for="direccion" value="Write Direction" />
+                <p:watermark for="direccion" value="Ingrese su dirección." />
                 <p:message for="direccion" />
                  
                 <h:outputLabel value="Ciudad" for="ciudad"/>
                 <h:inputText id="ciudad" value="#{proveedorControlador.proveedor.ciudad}" size="50"
-                             class="form-control" required="true" requiredMessage="Please enter city." 
-                             validatorMessage="Inválido e Intente nuevo">
+                             class="form-control" required="true" requiredMessage="Ingrese la ciudad." 
+                             validatorMessage="Ciudad inválida">
                     <f:validateRegex pattern="^[a-zA-Z-\s-.-/]+$"/>
                 </h:inputText>
-                <p:watermark for="ciudad" value="Write City" />
+                <p:watermark for="ciudad" value="Ingrese la ciudad." />
                 <p:message for="ciudad" />
                 
                 <h:commandButton value="Guardar" action="#{proveedorControlador.guardarProveedor}" class="btn btn-primary" />
