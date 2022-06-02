@@ -194,17 +194,36 @@
         <f:facet name="header">
             <h:outputText value="Formulario de Usuarios"/>
         </f:facet>
-        <h:link outcome="tabUsers" value="volver" class="btn btn-sm btn-primary my-2"/>
-        <h:form>
-            <h:panelGrid columns="2" class="table table-hover table-striped">
+        <h:link outcome="Usuario" value="volver" class="btn btn-sm btn-primary my-2"/>
+        <h:form><!-- class="table table-hover table-striped" -->
+            <h:panelGrid columns="1" >
+                <!-- E-mail -->
                 <h:outputLabel value="E-mail" for="email"/>
-                <h:inputText id="email" value="#{usuarioControlador.user.correo}" class="form-control"/>
+                <h:inputText id="email" value="#{usuarioControlador.user.correo}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter your E-mail." 
+                             validatorMessage="Inválido e Intente nuevo">
+                <f:validateRegex
+                 pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                </h:inputText>
+                <p:watermark for="correo" value="Write E-mail" />
+                <p:message for="correo" /> 
                 
                 <h:outputLabel value="Contraseña"  for="contrasenia"/>
-                <h:inputSecret id="contrasenia" value="#{usuarioControlador.user.password}" class="form-control"/>
+                <h:inputSecret id="contrasenia" value="#{usuarioControlador.user.password}" size="60"
+                               class="form-control" required="true" requiredMessage="Please enter Password"
+                            validatorMessage="Inválido e Intente nuevo">
+                     </h:inputSecret>
+                <p:watermark for="contrasenia" value="write Password" />
+                <p:message for="contrasenia" />
                 
                 <h:outputLabel value="Rol" for="rol"/>
-                <h:inputText id="rol" value="#{usuarioControlador.user.rol}"  class="form-control"/>
+                <h:inputText id="rol" value="#{usuarioControlador.user.rol}"  size="60" 
+                            class="form-control" required="true" requiredMessage="Please enter Rol"
+                            validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
+                </h:inputText>
+                <p:watermark for="rol" value="write Rol" />
+                <p:message for="rol" />
                 
                 <h:commandButton value="Crear" action="#{usuarioControlador.guardar}" class="btn btn-primary"/>
                 <h:inputHidden value="#{usuarioControlador.user.id}" class="btn btn-primary"/>

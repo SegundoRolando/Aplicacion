@@ -196,23 +196,57 @@
         </f:facet>
         <h:link outcome="Empleado" value="volver" class="btn btn-sm btn-primary my-2"/>
         <h:form>
-            <h:panelGrid columns="2" class="table table-hover table-striped">
-
-                <h:outputLabel value="Nombre" for="Nombre"/>
-                <h:inputText id="Nombre" value="#{empleadoControlador.empleado.name}" class="form-control"/>
-
-                <h:outputLabel value="Apellido" for="Apellido"/>
-                <h:inputText id="passApellidoword" value="#{empleadoControlador.empleado.apellido}" class="form-control"/>
-
-                <h:outputLabel value="Cedula" for="Cedula"/>
-                <h:inputText id="Cedula" value="#{empleadoControlador.empleado.cedula}" class="form-control"/>
+            <h:panelGrid columns="1" > <!--class="table table-hover table-striped"-->
+                <!-- Nombre -->
+                <h:outputLabel value="Nombre" for="nombre"/>
+                <h:inputText id="nombre" value="#{empleadoControlador.empleado.name}" size="60"
+                            class="form-control" required="true" requiredMessage="Please enter your First Name."
+                            validatorMessage="Requiere un nombre">
+                    <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
+                </h:inputText>
+                <p:watermark for="nombre" value="write Last Name" />
+                <p:message for="nombre" />
                 
-                <h:outputLabel value="Correo" for="Correo"/>
-                <h:inputText id="Correo" value="#{empleadoControlador.empleado.correo}" class="form-control"/>
+                 <!-- Apellido -->
+                <h:outputLabel value="Apellido" for="apellido"/>
+                <h:inputText id="apellido" value="#{empleadoControlador.empleado.apellido}" size="60" 
+                            class="form-control" required="true" requiredMessage="Please enter your Last Name."
+                            validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
+                </h:inputText>
+                <p:watermark for="apellido" value="write Last Name" />
+                <p:message for="apellido" />
                 
-                <h:outputLabel value="Cargo" for="Cargo"/>
-                <h:inputText id="Cargo" value="#{empleadoControlador.empleado.cargo}" class="form-control"/>
-
+                <!-- Cédula -->
+                <h:outputLabel value="Cédula" for="cedula"/>
+                <h:inputText id="cedula" value="#{empleadoControlador.empleado.cedula}" size="60" 
+                             class="form-control" required="true" requiredMessage="Please enter your ID"
+                             validatorMessage="Inválido e Intente nuevo">
+                <f:validateLength minimum = "10" maximum = "10" /> </h:inputText>
+                <p:watermark for="cedula" value="Write your Identity" />
+                <p:message for="cedula"/>
+                 <!-- E-mail -->
+                <h:outputLabel value="E-mail" for="correo"/>
+                <h:inputText id="correo" value="#{empleadoControlador.empleado.correo}" size="60"
+                             class="form-control" required="true" requiredMessage="Please enter your E-mail"
+                             validatorMessage="Inválido e Intente nuevo">
+                <f:validateRegex
+                 pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                </h:inputText>
+                <p:watermark for="correo" value="Write your E-mail" />
+                <p:message for="correo" />  
+                
+                 <!-- Cargo -->
+                <h:outputLabel value="Cargo" for="cargo"/>
+                <h:inputText id="cargo" value="#{empleadoControlador.empleado.cargo}" size="60"
+                             class="form-control" required="true" requiredMessage="Please enter your Cargo" 
+                            validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
+                </h:inputText>
+                <p:watermark for="cargo" value="Write your Cargo" />
+                <p:message for="cargo" />
+                
+                <!-- Botón Crear -->
                 <h:commandButton value="Crear" action="#{empleadoControlador.guardar}" class="btn btn-primary"/>
                 
                 <h:inputHidden value="#{empleadoControlador.empleado.id}"/>

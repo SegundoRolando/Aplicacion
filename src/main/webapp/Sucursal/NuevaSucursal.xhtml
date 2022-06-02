@@ -196,23 +196,51 @@
         </f:facet>
         <h:link outcome="Sucursal" value="volver" class="btn btn-sm btn-primary my-2"/>
         <h:form>
-            <h:panelGrid columns="2" class="table table-hover table-striped">
-                 
-                <h:outputLabel value="Nombre" for="nombre"/>
-                <h:inputText id="nombre" value="#{sucursalControlador.sucursal.name}" class="form-control"/>
-
-                <h:outputLabel value="Direccion" for="direccion"/>
-                <h:inputText id="direccion" value="#{sucursalControlador.sucursal.direccion}" class="form-control"/>
-
-                <h:outputLabel value="Telefono" for="telefono"/>
-                <h:inputText id="telefono" value="#{sucursalControlador.sucursal.telefono}" class="form-control"/> 
+            <h:panelGrid columns="1" >
+                <!-- Nombre -->
+                <h:outputLabel value="Nombre Sucursal" for="nombre"/>
+                <h:inputText id="nombre" value="#{sucursalControlador.sucursal.name}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter Name."
+                             validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s-0-9]+$"/>
+                </h:inputText>
+                <p:watermark for="nombre" value=" Write Name" />
+                <p:message for="nombre" />
+                <!-- Direccion -->
+                <h:outputLabel value="Dirección" for="direccion"/>
+                <h:inputText id="direccion" value="#{sucursalControlador.sucursal.direccion}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter Direction." 
+                             validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s-.-/-0-9]+$"/>
+                </h:inputText>
+                <p:watermark for="direccion" value="Write Direction" />
+                <p:message for="direccion" />
+                <!--Teléfono -->
                 
+                <h:outputLabel value="Teléfono" for="telefono"/>
+                <h:inputText id="telefono" value="#{sucursalControlador.sucursal.telefono}" size="50"
+                             class="form-control" required="true"  requiredMessage="Please enter your phone." 
+                             validatorMessage="Inválido e Intente nuevo">
+                <f:validateLength minimum = "7" maximum = "10" /> </h:inputText>
+                <p:watermark for="telefono" value="Write Phone" />
+                <p:message for="telefono" /> 
+                  <!-- Latitud -->
                 <h:outputLabel value="Latitud" for="latitud"/>
-                <h:inputText id="latitud" value="#{sucursalControlador.sucursal.latitud}" class="form-control"/>
-                
+                <h:inputText id="latitud" value="#{sucursalControlador.sucursal.latitud}" size="50"
+                             class="form-control" required="true"  requiredMessage="Please enter Latitud." 
+                             validatorMessage="Inválido e Intente nuevo">
+                <f:validateLength minimum = "1" maximum = "5" /> </h:inputText>
+                <p:watermark for="latitud" value="Write latitud" />
+                <p:message for="latitud" /> 
+                  <!-- Altitud -->
                 <h:outputLabel value="Altitud" for="altitud"/>
-                <h:inputText id="altitud" value="#{sucursalControlador.sucursal.altitud}" class="form-control"/>
-
+                <h:inputText id="altitud" value="#{sucursalControlador.sucursal.altitud}" size="50"
+                             class="form-control" required="true"  requiredMessage="Please enter Altitud." 
+                             validatorMessage="Inválido e Intente nuevo">
+                <f:validateLength minimum = "1" maximum = "5" /> </h:inputText>
+                <p:watermark for="altitud" value="Write altitud" />
+                <p:message for="altitud" /> 
+                  <!--Botón Crear -->
                 <h:commandButton value="Crear" action="#{sucursalControlador.guardar}" class="btn btn-primary"/>
                 
                 <h:inputHidden value="#{sucursalControlador.sucursal.id}"/>

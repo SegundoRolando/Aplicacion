@@ -195,41 +195,62 @@
         </f:facet>
         <h:link outcome="Producto" value="volver" class="btn btn-sm btn-primary my-2"/>
         <h:form>
-            <h:panelGrid columns="3" class="table table-hover table-striped">
-                
+            <h:panelGrid columns="1">
+                <!-- Nombre Producto -->
                 <h:outputLabel value="Nombre" for="nombre" class="col-form-label" />
-                <h:inputText id="nombre" value="#{productoControlador.producto.nombre}" class="form-control" required="true" label="Requiere un nombre del producto"/>
-                <h:message for="nombre" style="color:red;"/>
-                
+                <h:inputText id="nombre" value="#{productoControlador.producto.nombre}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter name Product" 
+                            validatorMessage="Inválido e Intente Nuevamente">
+                    <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
+                </h:inputText>
+                <p:watermark for="nombre" value="Ingres Nombre Producto" />
+                <p:message for="nombre"/>
+                <!-- Precio -->
                 <h:outputLabel value="Precio" for="precio" class="col-form-label"/>
-                <h:inputText id="precio" value="#{productoControlador.producto.precio}" class="form-control" required="true" label="Campo Numérico"/>
-                <h:message for="precio" style="color:red;"/>
-            
+                <h:inputText id="precio" value="#{productoControlador.producto.precio}" size="50"
+                             class="form-control" required="true"  requiredMessage="Please enter Price." 
+                             validatorMessage="Inválido e Intente Nuevamente">
+                <f:validateLength minimum = "1" maximum = "10" /> </h:inputText>
+                <p:watermark for="precio" value="Ingrese Precio" />
+                <p:message for="precio" /> 
+                <!-- Stock -->
                 <h:outputLabel value="stock" for="Stock" class="col-form-label"/>
-                <h:inputText id="stock" value="#{productoControlador.producto.stock}" class="form-control" required="true" label="Campo Numérico"/>
-                <h:message for="stock" style="color:red;"/>
-                
+                <h:inputText id="stock" value="#{productoControlador.producto.stock}" size="50"
+                             class="form-control" required="true"  requiredMessage="Please enter Stock." 
+                             validatorMessage="Inválido e Intente Nuevamente">
+                <f:validateLength minimum = "1" maximum = "10" /></h:inputText>
+                <p:watermark for="stock" value="Ingrese Stock" />
+                <p:message for="stock" /> 
+                <!-- Categoria -->
                 <h:outputLabel value="Categoria" for="categoria" class="col-form-label"/>
-                <h:selectOneMenu id="categoria" value="#{productoControlador.producto.categoria}" class="form-select" required="true" label="Selecione una Categoria">
+                <h:selectOneMenu id="categoria" value="#{productoControlador.producto.categoria}" 
+                                 class="form-control" required="true"  requiredMessage="Select Categoria" 
+                                validatorMessage="Inválido e Intente Nuevamente">
                     <f:selectItem itemLabel="--- Seleccione una Categoria ---" itemValue="#{null}"/>
                     <f:selectItems value="#{listadoCategorias}" var="cat" itemLabel="#{cat.nombre}"/>
                     <f:converter binding="#{categoriaConverter}"/>
-                    
                 </h:selectOneMenu>
-                <h:message for="categoria" style="color:red;"/>
-                
-                 <h:outputLabel value="Sucursal" for="sucursal" class="col-form-label"/>
-                <h:selectOneMenu id="sucursal" value="#{productoControlador.sucursal.id}" class="form-select" required="true" label="Selecione una Categoria">
+                <p:watermark for="categoria" value="Select Categoria" />
+                <p:message for="categoria" /> 
+                <!-- Sucursal -->
+                <h:outputLabel value="Sucursal" for="sucursal" class="col-form-label"/>
+                <h:selectOneMenu id="sucursal" value="#{productoControlador.sucursal.id}" 
+                                 class="form-control" required="true" requiredMessage="Select Sucursal" 
+                             validatorMessage="Inválido e Intente nuevo">
                     <f:selectItem itemLabel="--- Seleccione una Sucursal ---" itemValue="#{null}"/>
                     <f:selectItems value="#{listadoSucursales}" var="sur" itemLabel="#{sur.name}" itemValue="#{sur.id}"/>
-                    
                 </h:selectOneMenu>
-                <h:message for="sucursal" style="color:red;"/>
-                
-                
-                <h:outputLabel value="des" for="Descripción" class="col-form-label"/>
-                <h:inputText id="des" value="#{productoControlador.producto.descripcion}" class="form-control" required="true" label="Requiere una descripcion"/>
-                <h:message for="des" style="color:red;"/>
+                <p:watermark for="sucursal" value="Select Sucursal" />
+                <p:message for="sucursal" /> 
+                 <!-- Descripcion -->
+                <h:outputLabel value="Descipción" for="Descripción" class="col-form-label"/>
+                <h:inputText id="des" value="#{productoControlador.producto.descripcion}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter Description." 
+                             validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
+                </h:inputText>
+                <p:watermark for="des" value="Write Description" />
+                <p:message for="des" />
 
                 <h:commandButton value="Crear" action="#{productoControlador.guardar}" class="btn btn-primary"/>
                 <h:inputHidden value="#{productoControlador.producto.id}"/>

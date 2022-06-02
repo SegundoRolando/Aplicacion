@@ -195,11 +195,15 @@
         </f:facet>
         <h:link outcome="Producto" value="volver" class="btn btn-sm btn-primary my-2"/>
         <h:form>
-            <h:panelGrid columns="3" class="table table-hover table-striped">
-                
+            <h:panelGrid columns="1" class="table table-hover table-striped">
                 <h:outputLabel value="Nombre" for="nombre"/>
-                <h:inputText id="nombre" value="#{categoriaControlador.categoria.nombre}" required="true" label="Categoria Requiere un Nombre"/>          
-                <h:message for="nombre" style="color:red;"/>
+                <h:inputText id="nombre" value="#{categoriaControlador.categoria.nombre}"  
+                             class="form-control" required="true" requiredMessage="Please enter name."
+                             validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
+                </h:inputText>
+                <p:watermark for="nombre" value=" Ingresar el mnombre categoria" />
+                <p:message for="nombre" />
                 <h:commandButton value="Crear" action="#{categoriaControlador.guardar}" class="btn btn-primary"/>
                 <h:inputHidden value="#{categoriaControlador.categoria.id}"/>
             </h:panelGrid>

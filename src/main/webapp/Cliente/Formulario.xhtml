@@ -33,6 +33,7 @@
 
     <!-- Template Stylesheet -->
     <link href="../Recursos/css/style.css" rel="stylesheet"/>
+  
 </h:head>
 
     <h:body>
@@ -188,40 +189,71 @@
 
 
 <!-- Blank Start -->
-  <div class="container-fluid pt-4 px-4">
-      <div class="bg-light rounded-top p-4">
+  <div class="container-fluid pt-4 px-4 p-0">
+      <div class="bg-light rounded-top p-4 ">
         <h:panelGrid border="1" class="table">
         <f:facet name="header">
             <h:outputText value="Formulario Cliente"/>
         </f:facet>
         <h:link outcome="Clientes" value="volver" class="btn btn-sm btn-primary my-2"/>
         <h:form>
-            <h:panelGrid columns="3" class="table table-hover table-striped">
-
-                <h:outputLabel value="Nombre" for="nombre" class="col-form-label"/>
-                <h:inputText id="nombre" value="#{clienteControlador.cliente.nombre}" class="form-control"/>
-                <h:message for="nombre" style="color:red;"/>
+            <h:panelGrid columns="1">
+                <!-- Nombre -->
+                <h:outputLabel value="Nombre" for="nombre"/>
+                <h:inputText id="nombre" value="#{clienteControlador.cliente.nombre}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter your Firs Name."
+                             validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
+                </h:inputText>
+                <p:watermark for="nombre" value=" Write Firs Name" />
+                <p:message for="nombre" />
+                <!-- Apellido -->
+                <h:outputLabel value="Apellido" for="apellido"/>
+                <h:inputText id="apellido" value="#{clienteControlador.cliente.apellido}" size="50"
+                            class="form-control" required="true" requiredMessage="Please enter your Last Name." 
+                            validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z -\s]+$"/>
+                </h:inputText>
+                <p:watermark for="apellido" value="write Last Name" />
+                <p:message for="apellido"/>
+                 <!-- Cédula -->
+                <h:outputLabel value="Cédula" for="cedula"/>
+                <h:inputText id="cedula" value="#{clienteControlador.cliente.cedula}" size="50"
+                            class="form-control" required="true" requiredMessage="Please enter your Identity." 
+                            validatorMessage="Inválido e Intente nuevo">
+                <f:validateLength minimum = "10" maximum = "10" /> </h:inputText>
+                <p:watermark for="cedula" value="Write Identity" />
+                <p:message for="cedula" />
+                <!-- Telefono -->
+                <h:outputLabel value="Teléfono" for="telefono"/>  
+                <h:inputText id="telefono" value="#{clienteControlador.cliente.telefono}" size="50"
+                             class="form-control" required="true"  requiredMessage="Please enter your phone." 
+                             validatorMessage="Inválido e Intente nuevo">
+                <f:validateLength minimum = "7" maximum = "10" /> </h:inputText>
+                <p:watermark for="telefono" value="Write Phone" />
+                <p:message for="telefono" /> 
                 
-                <h:outputLabel value="Apellido" for="apellido" class="col-form-label"/>
-                <h:inputText id="apellido" value="#{clienteControlador.cliente.apellido}" class="form-control"/>
-                <h:message for="apellido" style="color:red;"/>
+                <!-- E-mail -->
+                <h:outputLabel value="E-mail" for="correo" />
+                <h:inputText id="correo" value="#{clienteControlador.cliente.correo}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter your E-mail." 
+                             validatorMessage="Inválido e Intente nuevo">
+                <f:validateRegex
+                 pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                </h:inputText>
+                <p:watermark for="correo" value="Write E-mail" />
+                <p:message for="correo" /> 
                 
-                <h:outputLabel value="Cedula" for="cedula" class="col-form-label"/>
-                <h:inputText id="cedula" value="#{clienteControlador.cliente.cedula}" class="form-control"/>
-                <h:message for="cedula" style="color:red;"/>
-                
-                <h:outputLabel value="Telefono" for="telefono" class="col-form-label"/>
-                <h:inputText id="telefono" value="#{clienteControlador.cliente.telefono}" class="form-control"/>
-                <h:message for="telefono" style="color:red;"/>
-                
-                <h:outputLabel value="Correo" for="correo" class="col-form-label"/>
-                <h:inputText id="correo" value="#{clienteControlador.cliente.correo}" class="form-control"/>
-                <h:message for="correo" style="color:red;"/>
-                
-                <h:outputLabel value="Direccion" for="direccion" class="col-form-label"/>
-                <h:inputText id="direccion" value="#{clienteControlador.cliente.direccion}" class="form-control"/>
-                <h:message for="apellido" style="color:red;"/>
-
+                <!-- Direccion -->
+                <h:outputLabel value="Dirección" for="direccion"/>
+                <h:inputText id="direccion" value="#{clienteControlador.cliente.direccion}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter your Direction." 
+                             validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s-.-/-0-9]+$"/>
+                </h:inputText>
+                <p:watermark for="direccion" value="Write Direction" />
+                <p:message for="direccion" />
+                <!-- Botón crear -->
                 <h:commandButton value="Crear" action="#{clienteControlador.guardar}" class="btn btn-primary"/>
                 <h:inputHidden value="#{clienteControlador.cliente.id}"/>
             </h:panelGrid>

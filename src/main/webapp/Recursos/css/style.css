@@ -275,3 +275,8 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+.formulario{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 20px;
+}

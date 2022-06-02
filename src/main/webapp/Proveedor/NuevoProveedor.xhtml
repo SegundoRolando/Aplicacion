@@ -196,24 +196,54 @@
         </f:facet>
         <h:link outcome="Proveedor" value="volver" class="btn btn-sm btn-primary my-2"/>
         <h:form>
-            <h:panelGrid columns="2" class="table table-hover table-striped">
-
+            <h:panelGrid columns="1" class="table table-striped">
+                 <!-- Direccion de correo electrónico -->
                 <h:outputLabel value="E-mail" for="correo"/>
-                <h:inputText id="correo" value="#{proveedorControlador.proveedor.correo}" class="form-control"/>
-                
+                <h:inputText id="correo" value="#{proveedorControlador.proveedor.correo}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter your E-mail." 
+                             validatorMessage="Inválido e Intente nuevo">
+                <f:validateRegex
+                 pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                </h:inputText>
+                <p:watermark for="correo" value="Write E-mail" />
+                <p:message for="correo" /> 
+                <!-- Nombre Proveedor -->
                 <h:outputLabel value="Nombre Proveedor" for="nom_Proveedor"/>
-                <h:inputText id="nom_Proveedor" value="#{proveedorControlador.proveedor.nom_Proveedor}" class="form-control"/>
-                
+                <h:inputText id="nom_Proveedor" value="#{proveedorControlador.proveedor.nom_Proveedor}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter your Firs Name."
+                             validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
+                </h:inputText>
+                <p:watermark for="nombre" value=" Write Name Proveedor" />
+                <p:message for="nombre" />
+                <!-- Teléfono -->
                 <h:outputLabel value="Teléfono" for="telefono"/>
-                <h:inputText id="telefono" value="#{proveedorControlador.proveedor.telefono}" class="form-control"/>
-                
+                <h:inputText id="telefono" value="#{proveedorControlador.proveedor.telefono}" size="50"
+                             class="form-control" required="true"  requiredMessage="Please enter your phone." 
+                             validatorMessage="Inválido e Intente nuevo">
+                <f:validateLength minimum = "7" maximum = "10" /> </h:inputText>
+                <p:watermark for="telefono" value="Write Phone" />
+                <p:message for="telefono" /> 
+                <!-- Dirección -->
                 <h:outputLabel value="Dirección" for="direccion"/>
-                <h:inputText id="direccion" value="#{proveedorControlador.proveedor.direccion}" class="form-control"/>
-
+                <h:inputText id="direccion" value="#{proveedorControlador.proveedor.direccion}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter your Direction." 
+                             validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s-.-/-0-9]+$"/>
+                </h:inputText>
+                <p:watermark for="direccion" value="Write Direction" />
+                <p:message for="direccion" />
+                 
                 <h:outputLabel value="Ciudad" for="ciudad"/>
-                <h:inputText id="ciudad" value="#{proveedorControlador.proveedor.ciudad}" class="form-control" />
-
-                <h:commandButton value="Guardar" action="#{proveedorControlador.guardarProveedor}" class="btn btn-primary"/>
+                <h:inputText id="ciudad" value="#{proveedorControlador.proveedor.ciudad}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter city." 
+                             validatorMessage="Inválido e Intente nuevo">
+                    <f:validateRegex pattern="^[a-zA-Z-\s-.-/]+$"/>
+                </h:inputText>
+                <p:watermark for="ciudad" value="Write City" />
+                <p:message for="ciudad" />
+                
+                <h:commandButton value="Guardar" action="#{proveedorControlador.guardarProveedor}" class="btn btn-primary" />
                 
                 <h:inputHidden value="#{proveedorControlador.proveedor.codigo}"/>
 

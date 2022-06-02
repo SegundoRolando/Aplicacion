@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
     <meta charset="UTF-8"/>
     <title>Formulario Categoria</title>
@@ -17,8 +18,14 @@
         <h:form>
             <h:panelGrid columns="2">
                 <h:outputLabel value="Nombre" for="nombre"/>
-                <h:inputText id="nombre" value="#{beansControlerRol.rol.nombre}"/>
-                
+                <h:inputText id="nombre" value="#{beansControlerRol.rol.nombre}" size="50"
+                             class="form-control" required="true" requiredMessage="Please enter your Firs Name."
+                             validatorMessage="Inválido e Intente nuevo">
+                     <f:validateRegex pattern="^[a-zA-Z-\s]+$"/>
+                </h:inputText>
+                <p:watermark for="nombre" value=" Write Firs Name" />
+                <p:message for="nombre" /> 
+                <h:message for="nombre" style="color:red;"/>
                 <h:commandButton value="Crear" action="#{beansControlerRol.guardar}"/>
                 <h:inputHidden value="#{beansControlerRol.rol.codigo}"/>
             </h:panelGrid>

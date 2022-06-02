@@ -54,19 +54,23 @@
                             <h3 class="text-primary">Inicio de sesión</h3>
                         </div>
                         <h:form>
-                            
-                            <h:outputLabel value="Correo" for="correo" />
-                            <p:inputText id="email" required="true" label="Requiere un E-mail" size="35"
-                            requiredMessage="Please enter your email address."
-                            validatorMessage="Ivalido e Intente nuevo"
-                            value="#{usuarioControlador.user.correo}">
+                           <!-- Nombre -->
+                           <h:outputLabel value="Correo" for="correo"/>
+                           <h:inputText id="email"  value="#{usuarioControlador.user.correo}" size="35"
+                                        class="form-control" required="true" requiredMessage="Please enter your email address."
+                                        validatorMessage="Inválido e Intente nuevo">
                             <f:validateRegex
-                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
-                             </p:inputText>
-                            <p:watermark for="email" value="Email Address *" />
+                             pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                            </h:inputText>
+                            <p:watermark for="email" value="Email Address" />
                             <p:message for="email" />
+                            <!-- Contraseña -->
+                            
                             <h:outputLabel value="Contraseña" for="password"/>
-                            <h:inputSecret id="password"  class="form-control" value="#{usuarioControlador.user.password}" required="true" label="Requiere una contraseña"/>
+                            <h:inputSecret id="password"  value="#{usuarioControlador.user.password}"  size="33" 
+                                           class="form-control" required="true" requiredMessage="Please enter your Password."
+                                           validatorMessage="Inválido e Intente nuevo"/>
+                             <p:watermark for="password" value="Password" />
                             <h:message for="password"/>
                             <br></br>
                             <h:commandButton value="Iniciar Sesion" action="#{usuarioControlador.validar(usuarioControlador.user.correo,usuarioControlador.user.password)}" class="btn btn-primary"/>
