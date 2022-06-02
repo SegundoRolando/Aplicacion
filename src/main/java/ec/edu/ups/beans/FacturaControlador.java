@@ -2,6 +2,7 @@
 package ec.edu.ups.beans;
 
 import ec.edu.ups.ejb.FacturaFacade;
+import ec.edu.ups.ejb.ProductoFacade;
 import ec.edu.ups.entidades.Cliente;
 import ec.edu.ups.entidades.Factura;
 import ec.edu.ups.entidades.FacturaDetalle;
@@ -20,19 +21,18 @@ public class FacturaControlador {
     
     @EJB
     private FacturaFacade facturaFacade;
+    @EJB
+    private ProductoFacade prodFacade;
     private Factura factura;
     private Cliente cliente;
     private Producto producto = new Producto();
-    private int idProducto;
+    private Long idProducto;
     private String nombreProducto;
     private FacturaDetalle detalle;
     static List<FacturaDetalle> detalles = new ArrayList<>();
     
     //calcular stock nuevo despues de venta
-    private int productoB;
-    private int nuevoS;
-    private int ventas;
-    private int stockTotal;
+    private int stockActualizado;
     
     //Datos de la factura cabecera.
     private int idCliente;
@@ -77,11 +77,11 @@ public class FacturaControlador {
         this.nombreCliente = nombreCliente;
     }
 
-    public int getIdProducto() {
+    public Long getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(int idProducto) {
+    public void setIdProducto(Long idProducto) {
         this.idProducto = idProducto;
     }
     
@@ -183,14 +183,10 @@ public class FacturaControlador {
         producto = facturaFacade.buscarProductoPorId(idProducto);
         nombreProducto = producto.getNombre(); 
         precio = producto.getPrecio();   
-        nuevoS = Integer.parseInt( producto.getStock());
-        ventas = producto.getCantidad();
-        stockTotal = producto.getStockTotal();
     }   
     
     
     public void add() {
-        
         totalXproducto = cantidad * precio;
         detalle = new FacturaDetalle();
         detalle.setId(idProducto);
@@ -212,8 +208,6 @@ public class FacturaControlador {
     }
     
     public void guardarFactura(){
-        productoB = nuevoS - cantidad;
-        producto.setStockTotal(productoB);
         cliente.setId(idCliente);
         cliente.setNombre(nombreCliente);
         factura.setCliente(cliente);
@@ -223,18 +217,16 @@ public class FacturaControlador {
         factura.setId(idCliente);
         factura.setDetalles(detalles);
         facturaFacade.guardarFactura(factura);
+        updateStock();
         detalles.clear();
-        System.out.println("************"+productoB+"**************");
-        System.out.println("------------"+cantidad+"--------------");
+        
     }
     
-    public void actualizarStock(Long producto){
-        /*this.producto = producto;
-        
-        if (id != null && id > 0) {
-            prodFacade.opcional(id).ifPresent(p -> {
-                this.producto = p;
-            });
-        }*/
+    public void updateStock(){
+        for (int i = 0; i < detalles.size(); i++) {
+            Producto p=prodFacade.getProductoByName(detalles.get(i).getDescripcion());
+            p.setStock(p.getStock()-detalles.get(i).getCantidad());
+            prodFacade.edit(p);    
+        }
     }
 }

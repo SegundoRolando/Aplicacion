@@ -96,17 +96,4 @@ public class ProductoControlador {
         }
         return "form.xhtml";
     }
-    
-    public void actualizarStock(Long id){
-        this.id = id;
-        
-        if (id != null && id > 0) {
-            prodFacade.opcional(id).ifPresent(p -> {
-                this.producto = p;
-            });
-        }
-    }
-    
-    
-    
 }

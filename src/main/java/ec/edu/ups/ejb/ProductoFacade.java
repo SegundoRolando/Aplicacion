@@ -56,6 +56,11 @@ public class ProductoFacade extends AbstractFacade<Producto> {
         return Optional.ofNullable(porId(id));
     }
     
+    public Producto getProductoByName(String name) {
+        String jpql = "SELECT s FROM Producto s WHERE s.nombre = '" + name + "'";
+        Producto producto = (Producto) em.createQuery(jpql).getSingleResult();
+        return producto;
+    }
     /*public void editar(Long id){
         em.createQuery("select p from Producto p", Producto.class)
          .setParameter("id", id)

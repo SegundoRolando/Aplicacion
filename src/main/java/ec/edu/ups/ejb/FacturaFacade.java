@@ -36,10 +36,10 @@ public class FacturaFacade extends AbstractFacade<Factura>{
                 .getSingleResult();
     }
     
-    public Producto buscarProductoPorId(int codigo) {
+    public Producto buscarProductoPorId(Long codigo) {
         //return em.find(Producto.class, id);
-        return em.createQuery("select p from Producto p where p.codigo=:codigo", Producto.class)
-                .setParameter("codigo", codigo)
+        return em.createQuery("select p from Producto p where p.id=:id", Producto.class)
+                .setParameter("id", codigo)
                 .getSingleResult();
     }
     

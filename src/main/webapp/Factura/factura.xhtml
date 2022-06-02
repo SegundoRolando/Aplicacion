@@ -253,7 +253,7 @@
                               
                           <div class="form-group d-flex" >
                                <h:commandButton action="#{facturaControlador.add}" value="Agregar" class="btn btn-primary">
-                                   <!-- <f:ajax execute="" render="" /> -->
+                                  
                                  </h:commandButton>  
                           </div>
                                <label>Subtotal: </label>
@@ -378,6 +378,15 @@
 
     <!-- Template Javascript -->
     <script src="../Recursos/js/main.js"></script>
+    <!-- Sirve para limipar las cajas de un formulario -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+        let formulario = document.getElementById('');
+        formulario.addEventListener('submit', function() {
+        formulario.reset();
+        });
+     });
+    </script>
 </h:body>
 
 </html>

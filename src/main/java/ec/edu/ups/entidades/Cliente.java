@@ -6,7 +6,6 @@ package ec.edu.ups.entidades;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,9 +13,7 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  *
@@ -34,8 +31,9 @@ public class Cliente implements Serializable{
     private String telefono;
     private String correo;
     private String direccion;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "cliente")
-    private Factura factura;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
+    private List<Factura> facturas; 
     
     public Cliente() {
     }
@@ -48,6 +46,14 @@ public class Cliente implements Serializable{
         this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
+    }
+
+    public List<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
     }
 
     

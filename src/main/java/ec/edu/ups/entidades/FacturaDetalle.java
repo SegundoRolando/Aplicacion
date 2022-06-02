@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 /**
  *
@@ -14,12 +15,16 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class FacturaDetalle {
     @Id
-    private int id;
+    private Long id;
     private int cantidad;
     private double precio;
     private String descripcion;
     private double totalXproducto;
+    
+    @OneToOne
+    @JoinColumn
     private Producto producto;
+    
     @ManyToOne
     @JoinColumn
     private Factura factura;
@@ -27,7 +32,7 @@ public class FacturaDetalle {
     public FacturaDetalle() {
     }
 
-    public FacturaDetalle(int id, int cantidad, double precio, String descripcion, double totalXproducto) {
+    public FacturaDetalle(Long id, int cantidad, double precio, String descripcion, double totalXproducto) {
         this.id = id;
         this.cantidad = cantidad;
         this.precio = precio;
@@ -37,7 +42,7 @@ public class FacturaDetalle {
 
     
     
-    public FacturaDetalle(int id, int cantidad, double precio, double totalXproducto, Producto producto) {
+    public FacturaDetalle(Long id, int cantidad, double precio, double totalXproducto, Producto producto) {
         this.id = id;
         this.cantidad = cantidad;
         this.precio = precio;
@@ -45,11 +50,11 @@ public class FacturaDetalle {
         this.producto = producto;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -91,6 +96,14 @@ public class FacturaDetalle {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Factura getFactura() {
+        return factura;
+    }
+
+    public void setFactura(Factura factura) {
+        this.factura = factura;
     }
     
     @Override

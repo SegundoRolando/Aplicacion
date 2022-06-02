@@ -7,10 +7,9 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int codigo;
     private String nombre;
     private double precio;
-    private String stock;
+    private int stock;
     private String descripcion;
     private int cantidad;
     private int stockTotal;
@@ -26,10 +25,9 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(Long id, int codigo, String nombre, double precio, String stock, String descripcion, 
+    public Producto(Long id, String nombre, double precio, int stock, String descripcion, 
             Categoria categoria, Sucursal sucursal, int cantidad,int stockTotal) {
         this.id = id;
-        this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
@@ -46,14 +44,6 @@ public class Producto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
     
     public String getNombre() {
@@ -72,11 +62,11 @@ public class Producto {
         this.precio = precio;
     }
 
-    public String getStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(String stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 
@@ -129,7 +119,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", precio=" 
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" 
                 + precio + ", stock=" + stock + ", descripcion=" + descripcion + ", cantidad=" + cantidad 
                 + ", stockTotal=" + stockTotal + ", categoria=" + categoria + ", sucursal=" + sucursal + '}';
     }

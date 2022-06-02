@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
@@ -30,9 +31,11 @@ public class Factura implements Serializable{
     private double subtotal;
     private double iva;
     private Sucursal sucursal;
-    @OneToOne
+    
+    @ManyToOne
     @JoinColumn
     private Cliente cliente;
+    
     @OneToMany(fetch = FetchType.LAZY)
     private List<FacturaDetalle> detalles;
     
