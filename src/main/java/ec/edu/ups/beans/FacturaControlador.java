@@ -226,7 +226,8 @@ public class FacturaControlador {
         for (int i = 0; i < detalles.size(); i++) {
             Producto p=prodFacade.getProductoByName(detalles.get(i).getDescripcion());
             p.setStock(p.getStock()-detalles.get(i).getCantidad());
-            prodFacade.edit(p);    
+            p.setCantidad(cantidad);
+            prodFacade.edit(p);
         }
     }
 }
