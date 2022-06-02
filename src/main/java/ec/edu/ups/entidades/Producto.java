@@ -12,6 +12,8 @@ public class Producto {
     private double precio;
     private String stock;
     private String descripcion;
+    private int cantidad;
+    private int stockTotal;
     @ManyToOne(fetch = FetchType.LAZY)
     private Categoria categoria;
    // @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -24,7 +26,8 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(Long id, int codigo, String nombre, double precio, String stock, String descripcion, Categoria categoria, Sucursal sucursal) {
+    public Producto(Long id, int codigo, String nombre, double precio, String stock, String descripcion, 
+            Categoria categoria, Sucursal sucursal, int cantidad,int stockTotal) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -33,6 +36,8 @@ public class Producto {
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.sucursal = sucursal;
+        this.cantidad = cantidad;
+        this.stockTotal = stockTotal;
     }
 
     public Long getId() {
@@ -98,6 +103,24 @@ public class Producto {
     public void setSucursal(Sucursal sucursal) {
         this.sucursal = sucursal;
     }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public int getStockTotal() {
+        return stockTotal;
+    }
+
+    public void setStockTotal(int stockTotal) {
+        this.stockTotal = stockTotal;
+    }
+    
+    
     
 //    @PrePersist
 //    public void prePersist() {
@@ -106,8 +129,12 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + ", stock=" + stock + ", descripcion=" + descripcion + ", categoria=" + categoria + ", sucursal=" + sucursal + '}';
+        return "Producto{" + "id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", precio=" 
+                + precio + ", stock=" + stock + ", descripcion=" + descripcion + ", cantidad=" + cantidad 
+                + ", stockTotal=" + stockTotal + ", categoria=" + categoria + ", sucursal=" + sucursal + '}';
     }
+
+    
 
    
 }

@@ -16,6 +16,7 @@ import java.util.Optional;
 public class ProductoFacade extends AbstractFacade<Producto> {
     @PersistenceContext(name="my_persistence_unit")
     private EntityManager em;
+    private Producto producto;
     
     @Override
     protected EntityManager getEntityManager() {
@@ -54,4 +55,11 @@ public class ProductoFacade extends AbstractFacade<Producto> {
     public Optional<Producto> opcional(Long id) {
         return Optional.ofNullable(porId(id));
     }
+    
+    /*public void editar(Long id){
+        em.createQuery("select p from Producto p", Producto.class)
+         .setParameter("id", id)
+         .getSingleResult();
+        em.merge(producto);
+    }*/
 }

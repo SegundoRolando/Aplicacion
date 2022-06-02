@@ -28,6 +28,12 @@ public class FacturaControlador {
     private FacturaDetalle detalle;
     static List<FacturaDetalle> detalles = new ArrayList<>();
     
+    //calcular stock nuevo despues de venta
+    private int productoB;
+    private int nuevoS;
+    private int ventas;
+    private int stockTotal;
+    
     //Datos de la factura cabecera.
     private int idCliente;
     private String nombreCliente;
@@ -176,7 +182,10 @@ public class FacturaControlador {
         
         producto = facturaFacade.buscarProductoPorId(idProducto);
         nombreProducto = producto.getNombre(); 
-        precio = producto.getPrecio();    
+        precio = producto.getPrecio();   
+        nuevoS = Integer.parseInt( producto.getStock());
+        ventas = producto.getCantidad();
+        stockTotal = producto.getStockTotal();
     }   
     
     
@@ -187,6 +196,7 @@ public class FacturaControlador {
         detalle.setId(idProducto);
         detalle.setDescripcion(nombreProducto);
         detalle.setCantidad(cantidad);
+        producto.setCantidad(cantidad);
         detalle.setPrecio(precio);
         detalle.setTotalXproducto(totalXproducto);
         detalles.add(detalle);
@@ -202,7 +212,8 @@ public class FacturaControlador {
     }
     
     public void guardarFactura(){
-        
+        productoB = nuevoS - cantidad;
+        producto.setStockTotal(productoB);
         cliente.setId(idCliente);
         cliente.setNombre(nombreCliente);
         factura.setCliente(cliente);
@@ -213,6 +224,17 @@ public class FacturaControlador {
         factura.setDetalles(detalles);
         facturaFacade.guardarFactura(factura);
         detalles.clear();
+        System.out.println("************"+productoB+"**************");
+        System.out.println("------------"+cantidad+"--------------");
+    }
+    
+    public void actualizarStock(Long producto){
+        /*this.producto = producto;
         
+        if (id != null && id > 0) {
+            prodFacade.opcional(id).ifPresent(p -> {
+                this.producto = p;
+            });
+        }*/
     }
 }

@@ -22,6 +22,7 @@ public class ProductoControlador {
     private ProductoFacade prodFacade;
     private Producto producto;
     private Long id;
+    private int totalP;
     private Sucursal sucursal;
     
     @Produces
@@ -94,6 +95,16 @@ public class ProductoControlador {
             });
         }
         return "form.xhtml";
+    }
+    
+    public void actualizarStock(Long id){
+        this.id = id;
+        
+        if (id != null && id > 0) {
+            prodFacade.opcional(id).ifPresent(p -> {
+                this.producto = p;
+            });
+        }
     }
     
     
