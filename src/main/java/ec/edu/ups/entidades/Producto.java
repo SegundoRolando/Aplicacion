@@ -12,6 +12,7 @@ public class Producto {
     private int stock;
     private String descripcion;
     private int cantidad;
+    private int cantidadIngresos;
     private int stockTotal;
     @ManyToOne(fetch = FetchType.LAZY)
     private Categoria categoria;
@@ -25,17 +26,17 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(Long id, String nombre, double precio, int stock, String descripcion, 
-            Categoria categoria, Sucursal sucursal, int cantidad,int stockTotal) {
+    public Producto(Long id, String nombre, double precio, int stock, String descripcion, int cantidad, int cantidadIngresos, int stockTotal, Categoria categoria, Sucursal sucursal) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
         this.descripcion = descripcion;
+        this.cantidad = cantidad;
+        this.cantidadIngresos = cantidadIngresos;
+        this.stockTotal = stockTotal;
         this.categoria = categoria;
         this.sucursal = sucursal;
-        this.cantidad = cantidad;
-        this.stockTotal = stockTotal;
     }
 
     public Long getId() {
@@ -109,22 +110,19 @@ public class Producto {
     public void setStockTotal(int stockTotal) {
         this.stockTotal = stockTotal;
     }
-    
-    
-    
-//    @PrePersist
-//    public void prePersist() {
-//        fechaRegistro = LocalDate.now();
-//    }
 
-    @Override
-    public String toString() {
-        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" 
-                + precio + ", stock=" + stock + ", descripcion=" + descripcion + ", cantidad=" + cantidad 
-                + ", stockTotal=" + stockTotal + ", categoria=" + categoria + ", sucursal=" + sucursal + '}';
+    public int getCantidadIngresos() {
+        return cantidadIngresos;
     }
 
+    public void setCantidadIngresos(int cantidadIngresos) {
+        this.cantidadIngresos = cantidadIngresos;
+    }
     
-
-   
+    @Override
+    public String toString() {
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", stock=" 
+                + stock + ", descripcion=" + descripcion + ", cantidad=" + cantidad + ", cantidadIngresos=" 
+                + cantidadIngresos + ", stockTotal=" + stockTotal + ", categoria=" + categoria + ", sucursal=" + sucursal + '}';
+    }
 }

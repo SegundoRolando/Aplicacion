@@ -38,6 +38,8 @@ public class FacturaControlador {
     private int idCliente;
     private String nombreCliente;
     private String apellido;
+    private int stockAnterior;
+    private int cant;
     
     //Datos del detalle factura
     private int cantidad;
@@ -183,6 +185,7 @@ public class FacturaControlador {
         producto = facturaFacade.buscarProductoPorId(idProducto);
         nombreProducto = producto.getNombre(); 
         precio = producto.getPrecio();   
+        stockAnterior = producto.getCantidad();
     }   
     
     
@@ -205,6 +208,7 @@ public class FacturaControlador {
              iva = subtotal * 0.12;
              total = subtotal + iva;  
         }	
+        cant = cantidad+stockAnterior;
     }
     
     public void guardarFactura(){
@@ -226,7 +230,7 @@ public class FacturaControlador {
         for (int i = 0; i < detalles.size(); i++) {
             Producto p=prodFacade.getProductoByName(detalles.get(i).getDescripcion());
             p.setStock(p.getStock()-detalles.get(i).getCantidad());
-            p.setCantidad(cantidad);
+            p.setCantidad(cantidad+stockAnterior);
             prodFacade.edit(p);
         }
     }
