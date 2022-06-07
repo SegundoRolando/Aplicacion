@@ -63,7 +63,12 @@ public class UsuarioControlador {
         this.userFacade.guardarU(user);
         return "Usuario.xhtml?faces-redirect=true";
     }
-   
+    
+    public String guardarUsuarioCliente(){
+        this.userFacade.guardarU(user);
+        return "/LogIn.xhtml?faces-redirect=true";
+    }
+    
     @Produces
     @RequestScoped
     @Named("listadoUsario")
@@ -91,31 +96,35 @@ public class UsuarioControlador {
     public String validar(String correo, String password){
         Usuario comp = userFacade.rolUs(correo, password);
         String comparar = comp.getRol();
-        if (comparar.equals("Administrador")){
+        if(comparar == null){
+            return "Cliente/Clientes.xhtml?faces-redirect=true";
+        }
+        if(comparar.equals("Administrador")){
             return "Admin.xhtml?faces-redirect=true";
         }
         if(comparar.equals("Empleado")){
             return "Producto/Producto_1.xhtml?faces-redirect=true";
         }
-        if(comparar.equals("Cliente")){
+        if(comparar.equals("Cliente") ){
             return "Cliente/Clientes.xhtml?faces-redirect=true";
         }
         return "LogIn.xhtml?faces-redirect=true";
     }
-     public boolean validarEmail(String email) {
+        
+    public boolean validarEmail(String email) {
         // Patron para validar el email
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
         Matcher mather = pattern.matcher(email);
         return mather.find();
     }
      
-     public void validarText(FacesContext facesContext,UIComponent toValidate,Object value){
+    public void validarText(FacesContext facesContext,UIComponent toValidate,Object value){
          facesContext = FacesContext.getCurrentInstance();
          String texto = (String) value;
          if(!texto.equalsIgnoreCase("M") && !texto.equalsIgnoreCase("F")){
              ((UIInput)toValidate).setValid(false);
              facesContext.addMessage(toValidate.getClientId(facesContext), new FacesMessage("Sexo no valido"));
          }
-     }
+    }
     
 }

@@ -60,4 +60,10 @@ public class ClienteFacade extends AbstractFacade<Cliente>{
         return Optional.ofNullable(BuscoPorId(id));
     }
     
+    public Cliente getClienteByName(String name) {
+        String jpql = "SELECT s FROM Cliente s WHERE s.nombre = '" + name + "'";
+        Cliente cliente = (Cliente) em.createQuery(jpql).getSingleResult();
+        return cliente;
+    }
+    
 }

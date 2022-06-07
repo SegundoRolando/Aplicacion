@@ -24,6 +24,7 @@ public class ClienteControlador {
     private ClienteFacade clienteFacade;
     private Cliente cliente;
     private int id;
+    private String nombres;
     
     @Produces
     @Model
@@ -50,13 +51,20 @@ public class ClienteControlador {
 
     public void setId(int id) {
         this.id = id;
-    }      
-        
+    }  
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+    
     @Produces
     @RequestScoped
     @Named("listadoClientes")
     public List<Cliente>listarCliente(){
-        System.out.println("Listar cliente por nivel: ");
         List<Cliente> cli = clienteFacade.getCliente();
         return cli;
     }
@@ -120,6 +128,13 @@ public class ClienteControlador {
             }
         }
         return false;
+    }
+    
+    public void buscarPorNombre(String nombre){
+        System.out.println("*************************************************"+ nombre);
+        Cliente cli = clienteFacade.getClienteByName(nombre);
+        System.out.println("*************************************************"+ cli.getNombre()+" "+cli.getApellido());
+        nombres=(cli.getNombre()+" "+cli.getApellido());
     }
     
 }

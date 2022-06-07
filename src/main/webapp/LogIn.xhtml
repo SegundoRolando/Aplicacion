@@ -73,7 +73,7 @@
                             <h:message for="password"/>
                             <br></br>
                             <h:commandButton value="Iniciar Sesion" action="#{usuarioControlador.validar(usuarioControlador.user.correo,usuarioControlador.user.password)}" class="btn btn-primary"/>
-                        
+                            <h:link outcome="Usuario/NuevoUsuarioCliente.xhtml" value="Crear una cuenta nueva" class="btn btn-sm btn-primary my-2"/>
                         </h:form>
                     </div>
                 </div>

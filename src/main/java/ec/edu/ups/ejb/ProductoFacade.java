@@ -67,4 +67,10 @@ public class ProductoFacade extends AbstractFacade<Producto> {
          .getSingleResult();
         em.merge(producto);
     }*/
+    
+    public List<Producto> buscaPorCategoria(String categoria){
+        String res = "SELECT p FROM Producto p JOIN p.categoria c WHERE c.nombre = '" + categoria + "'";
+        return em.createNamedQuery(res, Producto.class).getResultList();
+    }
+    
 }
