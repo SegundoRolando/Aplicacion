@@ -1,18 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ec.edu.ups.entidades;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -32,27 +27,17 @@ public class Factura implements Serializable{
     private double iva;
     private Sucursal sucursal;
     
-    @ManyToOne
-    @JoinColumn
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "CLIENTE_ID")
     private Cliente cliente;
     
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL)
     private List<FacturaDetalle> detalles;
     
     public Factura() {
     }
 
-    public Factura(int id, double total, LocalDate fecha, double subtotal, double iva, Sucursal sucursal, Cliente cliente, List<FacturaDetalle> detalles) {
-        this.id = id;
-        this.total = total;
-        this.fecha = fecha;
-        this.subtotal = subtotal;
-        this.iva = iva;
-        this.sucursal = sucursal;
-        this.cliente = cliente;
-        this.detalles = detalles;
-    }
-
+    
     public int getId() {
         return id;
     }
@@ -100,15 +85,7 @@ public class Factura implements Serializable{
     public void setSucursal(Sucursal sucursal) {
         this.sucursal = sucursal;
     }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
+    
     public List<FacturaDetalle> getDetalles() {
         return detalles;
     }
@@ -117,9 +94,11 @@ public class Factura implements Serializable{
         this.detalles = detalles;
     }
 
-    @Override
-    public String toString() {
-        return "Factura{" + "id=" + id + ", total=" + total + ", fecha=" + fecha + ", subtotal=" + subtotal + ", iva=" + iva + ", sucursal=" + sucursal + ", cliente=" + cliente + ", detalles=" + detalles + '}';
+    public Cliente getCliente() {
+        return cliente;
     }
-    
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    } 
 }

@@ -230,7 +230,7 @@ public class FacturaProveedorControlador {
         producto = facturaProveedorFacade.buscarProductoPorId(idProducto);
         nombreProducto = producto.getNombre(); 
         precio = producto.getPrecio();
-        stockAnterior = producto.getCantidadIngresos();
+        //stockAnterior = producto.getCantidadIngresos();
     }   
     
     
@@ -241,7 +241,7 @@ public class FacturaProveedorControlador {
         detalle.setId(idProducto);
         detalle.setDescripcion(nombreProducto);
         detalle.setCantidad(cantidad);
-        producto.setCantidad(cantidad);
+        //producto.setCantidad(cantidad);
         detalle.setPrecio(precio);
         detalle.setTotalXproducto(totalXproducto);
         detalles.add(detalle);
@@ -274,7 +274,6 @@ public class FacturaProveedorControlador {
         for (int i = 0; i < detalles.size(); i++) {
             Producto p=prodFacade.getProductoByName(detalles.get(i).getDescripcion());
             p.setStock(p.getStock()+detalles.get(i).getCantidad());
-            p.setCantidadIngresos(cantidad+stockAnterior);
             prodFacade.edit(p);
         }
     }

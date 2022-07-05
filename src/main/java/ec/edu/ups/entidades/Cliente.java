@@ -11,7 +11,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.List;
 
@@ -32,9 +31,9 @@ public class Cliente implements Serializable{
     private String correo;
     private String direccion;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Factura> facturas; 
-    
+//    
     public Cliente() {
     }
 
@@ -47,7 +46,7 @@ public class Cliente implements Serializable{
         this.correo = correo;
         this.direccion = direccion;
     }
-
+    
     public List<Factura> getFacturas() {
         return facturas;
     }
@@ -118,9 +117,4 @@ public class Cliente implements Serializable{
         return "Cliente{" + "id=" + id  + ", nombre=" + nombre + ", cedula=" + cedula 
                 + ", apellido=" + apellido + ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + '}';
     }
-
-    public void setId(Long idCliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }

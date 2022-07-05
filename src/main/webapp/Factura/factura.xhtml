@@ -260,39 +260,13 @@
                                   
                                  </h:commandButton>  
                           </div>
-                               <label>Subtotal: </label>
-                                <h:inputText value="#{facturaControlador.subtotal}" id="subtotal" class="form-control"/> 
                                 
-                               <label>iva: </label>
-                                <h:inputText value="#{facturaControlador.iva}" id="iva" class="form-control"/> 
+                   
                                 
-                                <label>Total: </label>
-                                <h:inputText value="#{facturaControlador.total}" id="total" class="form-control"/> 
-                                
-                                
-                                
-                                <div class="card-footer">
-                          <div>
-                               <h:commandButton action="#{facturaControlador.guardarFactura}" value="Guardar" class="btn btn-primary"/>
-                              <input type="submit" name="accion" value="Cancelar" class="btn btn-danger"/>
-                          </div>
-                      </div>
-                                
-                            </h:form>
-                      </div>
-                  </div>
-              </div> 
-          </div>
-        
-     </div>            
- </div>  
-
-
-<div class="container-fluid pt-4 px-4">
-      <div class="bg-light rounded-top p-4">
+                         
           
           <!-- TABLA DE DETALLE DE FACTURA -->
-              <div class="col-sm-8" >
+              <div class="col-sm-12" >
                   <div class="card">
                       <div class="card-body">
                           <div class="d-flex col-sm-3 ml-auto">
@@ -326,20 +300,46 @@
 
                       </div>
                       
-                      <div class="card-footer">
-                          <div>
-                              
-                          </div>
-                      </div>
-                      
-                      
                       
                   </div>
                   
               </div>  
-          
+                     
+                                
+                                
+                                
+                                
+                                
+                                
+                               <label>Subtotal: </label>
+                                <h:inputText value="#{facturaControlador.subtotal}" id="subtotal" class="form-control"/> 
+                                
+                               <label>iva: </label>
+                                <h:inputText value="#{facturaControlador.iva}" id="iva" class="form-control"/> 
+                                
+                                <label>Total: </label>
+                                <h:inputText value="#{facturaControlador.total}" id="total" class="form-control"/> 
+                                
+                                
+                                
+                                <div class="card-footer">
+                          <div>
+                               <h:commandButton action="#{facturaControlador.guardarFactura}" value="Guardar" class="btn btn-primary"/>
+                              <input type="submit" name="accion" value="Cancelar" class="btn btn-danger"/>
+                          </div>
+                      </div>
+                                
+                            </h:form>
+                      </div>
+                  </div>
+              </div> 
+          </div>
+        
      </div>            
- </div> 
+ </div>  
+
+
+
 
 
 <!-- Blank End -->

@@ -11,32 +11,18 @@ public class Producto {
     private double precio;
     private int stock;
     private String descripcion;
-    private int cantidad;
-    private int cantidadIngresos;
-    private int stockTotal;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     private Categoria categoria;
    // @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @OneToOne(fetch = FetchType.LAZY)
     private Sucursal sucursal; 
-
+    
+    
 //    @Column(name="fecha_registro")
 //    private LocalDate fechaRegistro;
 
     public Producto() {
-    }
-
-    public Producto(Long id, String nombre, double precio, int stock, String descripcion, int cantidad, int cantidadIngresos, int stockTotal, Categoria categoria, Sucursal sucursal) {
-        this.id = id;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.stock = stock;
-        this.descripcion = descripcion;
-        this.cantidad = cantidad;
-        this.cantidadIngresos = cantidadIngresos;
-        this.stockTotal = stockTotal;
-        this.categoria = categoria;
-        this.sucursal = sucursal;
     }
 
     public Long getId() {
@@ -95,34 +81,17 @@ public class Producto {
         this.sucursal = sucursal;
     }
 
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public int getStockTotal() {
-        return stockTotal;
-    }
-
-    public void setStockTotal(int stockTotal) {
-        this.stockTotal = stockTotal;
-    }
-
-    public int getCantidadIngresos() {
-        return cantidadIngresos;
-    }
-
-    public void setCantidadIngresos(int cantidadIngresos) {
-        this.cantidadIngresos = cantidadIngresos;
-    }
-    
+   
     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", stock=" 
-                + stock + ", descripcion=" + descripcion + ", cantidad=" + cantidad + ", cantidadIngresos=" 
-                + cantidadIngresos + ", stockTotal=" + stockTotal + ", categoria=" + categoria + ", sucursal=" + sucursal + '}';
+        return "Producto{" 
+                + "id=" 
+                + id + ", nombre=" 
+                + nombre + ", precio=" 
+                + precio + ", stock=" 
+                + stock + ", descripcion=" 
+                + descripcion + ", cantidad=" 
+                + categoria + ", sucursal=" 
+                + sucursal + '}';
     }
 }

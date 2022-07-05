@@ -21,11 +21,12 @@ public class FacturaControlador {
     
     @EJB
     private FacturaFacade facturaFacade;
+   
     @EJB
     private ProductoFacade prodFacade;
     private Factura factura;
     private Cliente cliente;
-    private Producto producto = new Producto();
+    private Producto producto;
     private Long idProducto;
     private String nombreProducto;
     private FacturaDetalle detalle;
@@ -48,11 +49,14 @@ public class FacturaControlador {
     private double subtotal;
     private double iva;
     private double total;
+    private int cod;
+    
     
     
     public FacturaControlador(){
         cliente = new Cliente();
         factura = new Factura();
+        producto = new Producto();
     }
 
     public int getIdCliente() {
@@ -176,8 +180,10 @@ public class FacturaControlador {
     }
     
     public void buscarCliente(){
+        //cliente = new Cliente();
         cliente = facturaFacade.buscarClientePorId(idCliente);
         nombreCliente = cliente.getNombre();
+        
     }
     public void buscarProducto(){
         System.out.println("CODIGO DEL PRODUCTO **** : " + idProducto);
@@ -185,7 +191,7 @@ public class FacturaControlador {
         producto = facturaFacade.buscarProductoPorId(idProducto);
         nombreProducto = producto.getNombre(); 
         precio = producto.getPrecio();   
-        stockAnterior = producto.getCantidad();
+        
     }   
     
     
@@ -195,9 +201,15 @@ public class FacturaControlador {
         detalle.setId(idProducto);
         detalle.setDescripcion(nombreProducto);
         detalle.setCantidad(cantidad);
-        producto.setCantidad(cantidad);
         detalle.setPrecio(precio);
         detalle.setTotalXproducto(totalXproducto);
+        
+        producto.setId(idProducto);
+        int id = 0;
+        id = id + 1;
+        factura.setId(id);
+        detalle.setFactura(factura);
+        detalle.setProducto(producto);
         detalles.add(detalle);
         
         subtotal = 0;
@@ -212,25 +224,25 @@ public class FacturaControlador {
     }
     
     public void guardarFactura(){
+    
         cliente.setId(idCliente);
-        cliente.setNombre(nombreCliente);
         factura.setCliente(cliente);
+        
         factura.setIva(iva);
         factura.setSubtotal(subtotal);
         factura.setTotal(total);
-        factura.setId(idCliente);
+       
         factura.setDetalles(detalles);
-        facturaFacade.guardarFactura(factura);
+        
+        facturaFacade.create(factura);
         updateStock();
         detalles.clear();
-        
     }
     
     public void updateStock(){
         for (int i = 0; i < detalles.size(); i++) {
             Producto p=prodFacade.getProductoByName(detalles.get(i).getDescripcion());
             p.setStock(p.getStock()-detalles.get(i).getCantidad());
-            p.setCantidad(cantidad+stockAnterior);
             prodFacade.edit(p);
         }
     }

@@ -10,6 +10,7 @@ import ec.edu.ups.entidades.Producto;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  *
@@ -43,11 +44,15 @@ public class FacturaFacade extends AbstractFacade<Factura>{
                 .getSingleResult();
     }
     
-    public void guardarFactura(Factura factura) {
+        public void guardarFactura(Factura factura) {
         if(factura.getId() != 0) {
             em.merge(factura);
         } else {
             em.persist(factura);
         }
+    }
+    
+    public List<Factura> listar() {
+        return em.createQuery("select p from Factura p", Factura.class).getResultList();
     }
 }
